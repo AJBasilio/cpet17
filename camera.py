@@ -2,6 +2,7 @@ import base64
 import cv2
 from datetime import datetime
 import requests
+import os
 
 # Assigning our static_back to None
 static_back = None
@@ -79,13 +80,18 @@ while True:
 		with open('readme.txt', 'w') as file:
 			file.write(str(image_decoded))
 
-		url = 'http://localhost:3000/camera'
+		img_name = f'img_{datetime.now().strftime("%m%d%Y-%H%M%S")}.png'
+		cv2.imwrite(os.path.join('./img_captured', img_name), frame)
+
+		url = 'http://localhost:4000/camera'
 		myobj = {"datetime" : str(datetime.now()),
 				 "image" : str(image_decoded)}
 
 		r = requests.post(url, data=myobj)
 		print(r.text)
   
+		img_counter += 1
+
 	# Displaying image in gray_scale
 	cv2.imshow("Gray Frame", gray)
 

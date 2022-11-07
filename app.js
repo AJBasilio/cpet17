@@ -3,7 +3,7 @@ const mysql = require("mysql2");
 const cors = require("cors");
 
 const app = express();
-const port = 3000;
+const port = 4000;
 
 app.use(cors());
 
@@ -19,13 +19,17 @@ const connection = mysql.createConnection({
 });
 
 app.get('/', (req, res) => {
+    res.send('Hello World!');
+})
+app.get('/motion-list', (req, res) => {
 
     connection.query('SELECT * FROM movement_dtect', (err, user) => {
         
-        let buffer = Buffer.from(user[8].captured_image)
+        // let buffer = Buffer.from(user[5].captured_image)
 
-        console.log(Buffer.from(user[0].captured_image));
-        res.send(buffer.toString('utf-8'));
+        // console.log(Buffer.from(user[0].captured_image));
+        // res.send(buffer.toString('utf-8'));
+        res.send(user);
     });
     
 });
