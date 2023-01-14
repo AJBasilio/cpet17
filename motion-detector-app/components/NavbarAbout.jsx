@@ -1,4 +1,4 @@
-import Button from "./Button";
+import button from "../styles/Button.module.css";
 import styles from "../styles/Navbar.module.css";
 import Link from 'next/link';
 import { signOut } from 'next-auth/react';
@@ -15,9 +15,9 @@ const NavbarAbout = () => {
         </div>
       </div>
       <div className={styles.navbarActions}>
-        <Button variant="secondary"><Link href="/Dashboard">Dashboard</Link></Button>
-        <Button variant="primary"><Link href="/AboutUs">About Us</Link></Button>
-        <Button variant="secondary"><Link href="/">Settings</Link></Button>
+        <Link href="/Dashboard" className={button.primary}>Dashboard</Link>
+        <Link href="/AboutUs" className={button.primary} >About Us</Link>
+        <Link href="/" className={button.primary} >Settings</Link>
         <button onClick={() => signOut()}>Sign Out</button>
       </div>
       </div>

@@ -1,4 +1,5 @@
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 export const getStaticProps = async () => {
 

@@ -28,10 +28,14 @@ const RegisterCard = () => {
 
     return (
     <div className={styles.container}>
-        <div className="card d-flex w-50" style={{backgroundColor:'#1c1c1c',minHeight:'80vh',border:'white 1px solid',padding:'0px 30px 50px 30px'}}>
+        <div className="card d-flex w-50" style={{backgroundColor:'#1c1c1c',minHeight:'80vh',border:'white 1px ridge',padding:'0px 30px 50px 30px',borderRadius:'30px'}}>
             <div className="card-header" style={{border:'none', padding:'20px 50px 0px 50px'}}>
                 <div className="d-flex justify-content-center align-items-center mb-3 w-100" >
-                    <img className={styles.Logo} src="/logo/Surveillhanz.png"/> 
+                <Link href={'/'}>
+                    <img className={styles.Logo} src="/logo/Surveillhanz.png"> 
+                    
+                    </img>
+                </Link> 
                 </div>
                 <div className="d-flex justify-content-center align-items-center" >
                     <h2 className="text-white fw-bold "> Surveillhanz</h2>
@@ -104,6 +108,9 @@ const RegisterCard = () => {
                     </section>
                 </div>
             </div>
+        </div>
+        <div className={styles.floatButton}>
+            <Link href="/"><img className={styles.LogoAppear} src="/logo/homeLogo.png" height={25} width={25}/>Home</Link>
         </div>
     </div>
     );

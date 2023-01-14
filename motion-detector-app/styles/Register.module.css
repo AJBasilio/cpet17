@@ -128,3 +128,42 @@
     
 }
 
+.floatButton{
+    position:fixed;
+    right:80px;
+    bottom:50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.floatButton a{
+    background-color: #1c1c1c;
+    color:#e6e6e6;
+    font-weight: bold;
+    height: 50px;
+    width: 115px;
+    text-decoration: none;
+    box-shadow: 1px 1px 0 #E6E6E6,
+		-1px -1px 0 #E6E6E6,
+		-1px 1px 0 #E6E6E6,
+		1px -1px 0 #E6E6E6;
+	transition: 500ms ease-in-out;
+    border-radius: 5px;
+    padding:10px 18px 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:5px;
+}
+
+.floatButton a:hover{
+    color: #E6E6E6;
+    transition: 0.1s;
+    cursor: pointer;
+    box-shadow: 10px 5px 0 #E6E6E6, -10px -5px 0 #E6E6E6;
+    transform: scale(1.05);
+}
+
+
+

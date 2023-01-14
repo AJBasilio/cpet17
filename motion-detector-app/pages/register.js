@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import RegisterCard from "../components/RegisterCard.jsx";
+import 'bootstrap/dist/css/bootstrap.css';
 import { getSession } from "next-auth/react";
 
 export default function Register(){

@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import NavbarAbout from "../components/NavbarAbout";
 import Head from 'next/head';
 import { getSession } from "next-auth/react";
+import 'bootstrap/dist/css/bootstrap.css';
 
 
 

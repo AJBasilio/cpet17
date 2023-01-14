@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head';
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css';
 import styles from "../styles/Login.module.css";
-import LogInCard from "../components/LogInCard.jsx";
 import Link from "next/link";
 import { useState} from 'react';
 import {getSession, useSession, signIn, signOut } from 'next-auth/react';
@@ -118,6 +117,9 @@ export default function Login(){
             </div>
         </div>
     </div>
+    <div className={styles.floatButton}>
+            <Link href="/"><img className={styles.LogoAppear} src="/logo/homeLogo.png" height={25} width={25}/>Home</Link>
+        </div>
     
     </div>
 

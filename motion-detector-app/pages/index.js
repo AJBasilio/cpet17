@@ -5,6 +5,7 @@ import Definition from "../components/Home/Definition";
 import Footer from "../components/Footer";
 import Head from 'next/head';
 import { getSession } from "next-auth/react";
+import 'bootstrap/dist/css/bootstrap.css';
 
 function Surveillhanz() {
   return (

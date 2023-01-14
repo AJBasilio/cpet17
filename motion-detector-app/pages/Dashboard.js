@@ -1,11 +1,15 @@
 import Footer from "../components/Footer";
-import NavbarDashboard from "../components/NavbarDashboard";
 import { motion } from 'framer-motion';
 import styles from "/styles/Dashboard/DashboardContent.module.css";
 import Head from 'next/head';
 import { useMemo, useState } from 'react';
 import { useTable, useSortBy, usePagination, useGlobalFilter,  useAsyncDebounce  } from 'react-table';
 import { useSession, getSession } from "next-auth/react";
+import { signOut } from 'next-auth/react';
+import 'bootstrap/dist/css/bootstrap.css';
+import navbar from "../styles/Navbar.module.css";
+import button from "../styles/Button.module.css";
+import Link from "next/link";
 
 function Dashboard() {
   const {data:session} = useSession()
@@ -212,7 +216,34 @@ function Dashboard() {
           <link rel="icon" href="logo/Surveillhanz.ico"/>
         </Head>
   
-        <NavbarDashboard/>
+        <div className={navbar.container}>
+          <div className={navbar.Title}>
+            <div>
+              <img src="/logo/Surveillhanz.png" />
+            </div>
+            <div>
+              <h1> Surveillhanz</h1>
+            </div>
+          </div>
+          <div className={navbar.navbarActions}>
+            
+          <input type="checkbox" id="checkBox" className={navbar.checkBox}/>
+            <label for="checkBox" className={button.primary}><img src="/logo/userLogo.png" height={25} width={25}/>
+            <span>{session.user.name}</span>
+            </label>
+            <div className={navbar.dropdownActions}>
+              <ul className="d-flex flex-column justify-content-center align-items-center text-center m-0 p-0">
+                <li>
+                  <Link href="/settings">Settings</Link>
+                </li>
+                <li onClick={() => signOut()}>
+                  Sign Out
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
         <motion.div initial="hidden" animate="visible" variants={{
           hidden:{
             scale:0.8,
@@ -231,8 +262,7 @@ function Dashboard() {
         <div className={styles.container}>
        {openModal && <Modal setOpenModal={setOpenModal} />}
           <div className={styles.containerText}>
-            <h1>Dashboard {session.user.name}</h1>
-            <h1>{session.user.email}</h1>
+            <h1>Dashboard</h1>
           </div>
           <div className={styles.search}>
           <GlobalFilter
