@@ -9,24 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "13.0.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
     "bootstrap": "^5.2.3",
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.3",
-    "framer-motion": "^7.6.12",
-   
+    "framer-motion": "^7.10.3",
+    "next": "13.0.0",
     "next-auth": "^4.18.8",
-   
-    
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
     "react-intersection-observer": "^9.4.1",
     "react-table": "^7.8.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.19.6",
     "eslint": "8.26.0",
-    "eslint-config-next": "13.0.0",
-    "@babel/plugin-transform-runtime": "^7.19.6"
+    "eslint-config-next": "13.0.0"
   }
 }
