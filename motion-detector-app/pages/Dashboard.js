@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import navbar from "../styles/Navbar.module.css";
 import button from "../styles/Button.module.css";
 import Link from "next/link";
+import Dropdown from "react-bootstrap/Dropdown";
 
 function Dashboard() {
   const {data:session} = useSession()
@@ -137,7 +138,7 @@ function Dashboard() {
       <div className={styles.modalBackground}>
         <div className={styles.modalContainer}>
           <div className={styles.title}>
-            <h1>Captured Photo</h1>
+            <img src="/logo/captureLogo.png" height={75} width={75}/><h1>Captured Photo</h1>
           </div>
           <div className={styles.body}>
             <img src="images/sample3.png" alt="sample photo" />
@@ -212,7 +213,7 @@ function Dashboard() {
     return (
       <div>
         <Head>
-          <title>Surveillhanz | Dashboard</title>
+          <title>Dashboard</title>
           <link rel="icon" href="logo/Surveillhanz.ico"/>
         </Head>
   
@@ -225,25 +226,31 @@ function Dashboard() {
               <h1> Surveillhanz</h1>
             </div>
           </div>
+          
           <div className={navbar.navbarActions}>
-            
-          <input type="checkbox" id="checkBox" className={navbar.checkBox}/>
-            <label for="checkBox" className={button.primary}><img src="/logo/userLogo.png" height={25} width={25}/>
-            <span>{session.user.name}</span>
-            </label>
-            <div className={navbar.dropdownActions}>
-              <ul className="d-flex flex-column justify-content-center align-items-center text-center m-0 p-0">
-                <li>
-                  <Link href="/settings">Settings</Link>
-                </li>
-                <li onClick={() => signOut()}>
-                  Sign Out
-                </li>
+          {['down-centered'].map(
+          (direction) => (
+            <Dropdown autoClose="outside" align="end">
+              <Dropdown.Toggle className={button.primary} variant="none" text="white" id="dropdown-basic">
+              <img src="/logo/userLogo2.png" height={25} width={25}/><span>{session.user.name}</span>
+              </Dropdown.Toggle>
 
-              </ul>
-            </div>
+              <Dropdown.Menu variant="dark" 
+              style={{
+                  backgroundColor:"#1c1c1c", 
+                border:"2px ridge white",
+                 color:"#e6e6e6",
+                 textAlign:"start",
+              }} >
+                <Dropdown.Item href="/account" style={{color:"#e6e6e6",fontWeight:"bold"}}><img src="/logo/userLogo2.png" height={25} width={25}/> Account</Dropdown.Item>
+                <Dropdown.Item onClick={() => signOut()} style={{color:"#e6e6e6",fontWeight:"bold"}}><img src="/logo/logoutLogo.png" height={25} width={25}/> Sign Out</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            ),
+            )}
           </div>
         </div>
+
         <motion.div initial="hidden" animate="visible" variants={{
           hidden:{
             scale:0.8,

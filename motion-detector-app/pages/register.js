@@ -10,7 +10,7 @@ export default function Register(){
     
     <div>
     <Head>
-        <title>Surveillhanz | Register</title>
+        <title>Register</title>
         <link rel="icon" href="logo/Surveillhanz.ico"/>
     </Head>
     <RegisterCard/>

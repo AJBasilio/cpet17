@@ -85,7 +85,11 @@
     color: rgb(255, 255, 255);
     background-color: #1c1c1c;
     background-clip: padding-box;
-    border: 1px solid #ced4da;
+    box-shadow: 1px 1px 0 #E6E6E6,
+		-1px -1px 0 #E6E6E6,
+		-1px 1px 0 #E6E6E6,
+		1px -1px 0 #E6E6E6;
+	transition: 500ms ease-in-out;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -95,12 +99,16 @@
     justify-content:center;
     align-items:center;
     gap:20px;
+    margin-top:10px;
 
 }
 
 .formControlButton:hover{
-    transform: scale(1.025);
-    transition: 0.3s;
+    color: #E6E6E6;
+    transition: 0.1s;
+    cursor: pointer;
+    box-shadow: 10px 5px 0 #E6E6E6, -10px -5px 0 #E6E6E6;
+    transform: scale(1.05);
 }
 
 .formControlButton:active{
@@ -166,5 +174,25 @@
     transform: scale(1.05);
 }
 
+.floatButton a:active{
+    transition:0.5s;
+    transform: scale(.925);
+}
+
+
+.guide{
+    text-align: center;
+    color:#FFC107;
+    animation-name:animateGuide;
+    animation-duration:1s;
+    animation-fill-mode: forwards;
+    margin-top:1px;
+    font-size: 12px;
+    position:absolute;
+    z-index: 1020;
+    bottom:-17px;
+    width: auto;
+    transition: 300ms ease-in-out;
+}
 
 

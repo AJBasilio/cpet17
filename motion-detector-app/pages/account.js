@@ -2,10 +2,12 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head';
 import 'bootstrap/dist/css/bootstrap.css';
-import styles from "../styles/Login.module.css";
+import styles from "../styles/settings.module.css";
 import Link from "next/link";
 import { useState} from 'react';
 import {getSession, useSession, signOut } from 'next-auth/react';
+import {useFormik} from 'formik';
+import {settingsValidate} from "../lib/validate";
 
 export default function settings(){
 
@@ -13,11 +15,25 @@ export default function settings(){
     const[nshow, setnShow] = useState(false)
     const {data:session} = useSession()
 
+    // Settings Formik
+    const formik = useFormik({
+        initialValues: {
+            password: '',
+            npassword: ''
+        },
+        validate: settingsValidate,
+        onSubmit
+    });
+
+    async function onSubmit(values) {
+        console.log(values)
+    }
+
     return(
     <div>
     <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Surveillhanz | Log In</title>
+        <title>Account</title>
         <link rel="icon" href="logo/Surveillhanz.ico"/>
     </Head>
     <div className={styles.container}>
@@ -31,7 +47,7 @@ export default function settings(){
                 </Link>
                 </div>
                 <div className="d-flex justify-content-center align-items-center" >
-                    <h2 className="text-white fw-bold "> Account Profile </h2>
+                    <h2 className="text-white fw-bold "> Account Details </h2>
                 </div>
                 <hr className="text-white"/>
             </div>
@@ -39,7 +55,7 @@ export default function settings(){
                 <div className="d-flex flex-column justify-content-center align-items-center">
                     <h4  className='text-white fw-bold'>  </h4>
                     <section className={`${styles.formContainer}`}>
-                    <form className="d-flex flex-column gap-4">
+                    <form className="d-flex flex-column " onSubmit={formik.handleSubmit}>
                         <div className="text-white d-block">
                             <span className='d-block text-center mb-3'>
                                 <h5 className='fw-bold'>
@@ -54,36 +70,41 @@ export default function settings(){
                                 <span>{session.user.email}</span>
                             </span>
                         </div>
-
+                    
                         <hr className="text-white"/>
                         <h5 className='fw-bold text-center text-white'>
                                     Change Password
                                 </h5>
-                        <div className="input-group">
-                            
-                            <input className={styles.formControl}
-                            type={`${show ?"text":"password"}`}
-                            name="password"
-                            placeholder="Old Password"
-                            />
-                            <span className={styles.passwordLogo} onClick={()=> setShow(!show)}>
-                                <img src="/logo/Surveillhanz.png" width={25} height={25} />
-                            </span>
-                        </div>
-                        <div className="input-group">
-                            <input className={styles.formControl}
-                            type={`${nshow ?"text":"password"}`}
-                            name="npassword"
-                            placeholder="New Password"
-                            />
-                            <span className={styles.passwordLogo} onClick={()=> setnShow(!nshow)}>
-                                <img src="/logo/Surveillhanz.png" width={25} height={25} />
-                            </span>
-                        </div>
-                        <div className="input-button">
-                            <button type="submit" className={styles.formControlButton}>
-                                <Link href={'/settings'} className="text-decoration-none text-white">Confirm</Link>
-                            </button>
+                        <div className='d-flex flex-column gap-3'>
+                            <div className="input-group mt-4 d-flex flex-column justify-content-center">
+                                <input className={styles.formControl}
+                                type={`${show ?"text":"password"}`}
+                                name="password"
+                                placeholder="Old Password"
+                                {...formik.getFieldProps('password')}
+                                />
+                                <span className={styles.passwordLogo} onClick={()=> setShow(!show)}>
+                                    <img src="/logo/Surveillhanz.png" width={25} height={25} />
+                                </span>
+                                {formik.errors.password && formik.touched.password ? <span className={styles.guide}>{formik.errors.password}</span> : <></>}
+                            </div>
+                            <div className="input-group d-flex flex-column justify-content-center">
+                                <input className={styles.formControl}
+                                type={`${nshow ?"text":"password"}`}
+                                name="npassword"
+                                placeholder="New Password"
+                                {...formik.getFieldProps('npassword')}
+                                />
+                                <span className={styles.passwordLogo} onClick={()=> setnShow(!nshow)}>
+                                    <img src="/logo/Surveillhanz.png" width={25} height={25} />
+                                </span>
+                                {formik.errors.npassword && formik.touched.npassword ? <span className={styles.guide}>{formik.errors.npassword}</span> : <></>}
+                            </div>
+                            <div className="input-button">
+                                <button type="submit" className={styles.formControlButton}>
+                                    Confirm
+                                </button>
+                            </div>
                         </div>
                     </form>
                     </section>

@@ -14,7 +14,7 @@ const AboutUsLinks = () => {
     <div ref={containerRef} className={`${styles.container} ${containerVisible ? styles.animateContainer : ''}` }>
       <div ref={contactsDivRef} className={`${styles.ContactsDiv} ${contactsDivVisible ? styles.animateContactsDiv : ''}` }>
         <div className={styles.contacts}>
-          <h3>Dominick Hanz Joson</h3>
+          <h5>Dominick Hanz Joson</h5>
           <img ref={idPictureRef} className={`${styles.idPicture} ${idPictureVisible ? styles.animateIdPicture : ''}` } src="/images/domsPic.jpg" alt="Sample Image Object Recognition" />
           <div className={styles.Links}>
             <Link className={styles.fbLink} target="_blank" href="https://www.facebook.com/dominickhanz.joson.7"><img className={styles.LinkLogo} src="logo/facebookLogo.svg" alt="FacebookLogo" /> <img className={styles.LinkLogoColored} src="logo/facebookLogo.png" alt="FacebookLogo" /><p>Facebook</p></Link>
@@ -24,7 +24,7 @@ const AboutUsLinks = () => {
       </div>
       <div ref={contactsDivRef} className={`${styles.ContactsDiv} ${contactsDivVisible ? styles.animateContactsDiv : ''}` }>
         <div className={styles.contacts}>
-          <h3>Leo Mar Dela Cruz</h3>
+          <h5>Leo Mar Dela Cruz</h5>
           <img ref={idPictureRef2} className={`${styles.idPicture} ${idPictureVisible2 ? styles.animateIdPicture2 : ''}` } src="/images/leoPic.jpg" alt="Sample Image Object Recognition" />
           <div className={styles.Links}>
             <Link className={styles.fbLink} target="_blank" href="https://www.facebook.com/leomar0029"><img className={styles.LinkLogo} src="logo/facebookLogo.svg" alt="FacebookLogo" /> <img className={styles.LinkLogoColored} src="logo/facebookLogo.png" alt="FacebookLogo" /><p>Facebook</p></Link>
@@ -34,7 +34,7 @@ const AboutUsLinks = () => {
       </div>
       <div ref={contactsDivRef} className={`${styles.ContactsDiv} ${contactsDivVisible ? styles.animateContactsDiv : ''}` }>
         <div className={styles.contacts}>
-          <h3>John Ray Fetalvero</h3>
+          <h5>John Ray Fetalvero</h5>
           <img ref={idPictureRef3} className={`${styles.idPicture} ${idPictureVisible3 ? styles.animateIdPicture3 : ''}` } src="/images/mamiPic.png" alt="Sample Image Object Recognition" />
           <div className={styles.Links}>
             <Link className={styles.fbLink} target="_blank" href="https://www.facebook.com/fetalvero.jr"><img className={styles.LinkLogo} src="logo/facebookLogo.svg" alt="FacebookLogo" /> <img className={styles.LinkLogoColored} src="logo/facebookLogo.png" alt="FacebookLogo" /><p>Facebook</p></Link>
@@ -44,7 +44,7 @@ const AboutUsLinks = () => {
       </div>
       <div ref={contactsDivRef} className={`${styles.ContactsDiv} ${contactsDivVisible ? styles.animateContactsDiv : ''}` }>
         <div className={styles.contacts}>
-          <h3>Arsher James Basilio</h3>
+          <h5>Arsher James Basilio</h5>
           <img ref={idPictureRef4} className={`${styles.idPicture} ${idPictureVisible4 ? styles.animateIdPicture4 : ''}` } src="/images/ajPic.jpg" alt="Sample Image Object Recognition" />
           <div className={styles.Links}>
             <Link className={styles.fbLink} target="_blank" href="https://www.facebook.com/AyJay.mes"><img className={styles.LinkLogo} src="logo/facebookLogo.svg" alt="FacebookLogo" /> <img className={styles.LinkLogoColored} src="logo/facebookLogo.png" alt="FacebookLogo" /><p>Facebook</p></Link>
@@ -54,7 +54,7 @@ const AboutUsLinks = () => {
       </div>
       <div ref={contactsDivRef} className={`${styles.ContactsDiv} ${contactsDivVisible ? styles.animateContactsDiv : ''}` }>
         <div className={styles.contacts}>
-          <h3>Jhon Carlo Luna</h3>
+          <h5>Jhon Carlo Luna</h5>
           <img ref={idPictureRef5} className={`${styles.idPicture} ${idPictureVisible5 ? styles.animateIdPicture5 : ''}` } src="/images/carloPic.jpg" alt="Sample Image Object Recognition" />
           <div className={styles.Links}>
             <Link className={styles.fbLink} target="_blank" href="https://www.facebook.com/Carlo.Luna24"><img className={styles.LinkLogo} src="logo/facebookLogo.svg" alt="FacebookLogo" /> <img className={styles.LinkLogoColored} src="logo/facebookLogo.png" alt="FacebookLogo" /><p>Facebook</p></Link>

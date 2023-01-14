@@ -9,7 +9,7 @@
   align-items: center;
   text-align: center;
   justify-content: center;
-  color: #E6E6E6;
+  color: #E6E6E6 !important;
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -33,6 +33,7 @@
   cursor: pointer;
   box-shadow: 10px 5px 0 #E6E6E6, -10px -5px 0 #E6E6E6;
   transform: scale(1.05);
+  background-color:#1c1c1c;
 }
 
 .secondary {
@@ -57,7 +58,7 @@
 		-1px -1px 0 #E6E6E6,
 		-1px 1px 0 #E6E6E6,
 		1px -1px 0 #E6E6E6;
-	transition: 500ms ease-in-out;
+	transition: 700ms ease-in-out;
   border-radius: 5px;
   padding:15px;
 }

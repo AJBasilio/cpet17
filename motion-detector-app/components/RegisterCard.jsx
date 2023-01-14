@@ -5,6 +5,7 @@ import { useState } from 'react';
 import {useFormik} from 'formik';
 import {registerValidate} from "../lib/validate";
 
+
 const RegisterCard = () => {
 
     const[show, setShow] = useState(false)
@@ -27,6 +28,7 @@ const RegisterCard = () => {
     }
 
     return (
+    <div>
     <div className={styles.container}>
         <div className="card d-flex w-50" style={{backgroundColor:'#1c1c1c',minHeight:'80vh',border:'white 1px ridge',padding:'0px 30px 50px 30px',borderRadius:'30px'}}>
             <div className="card-header" style={{border:'none', padding:'20px 50px 0px 50px'}}>
@@ -47,71 +49,70 @@ const RegisterCard = () => {
                     <h4  className='text-white fw-bold'> REGISTER </h4>
                     <section className={`${styles.formContainer}`}>
 
-                    <form className="d-flex flex-column gap-4" onSubmit={formik.handleSubmit}>
-                        <div className="input-group mt-4">
-                            <input required className={styles.formControl}
-                            type="text" 
-                            name="username"
-                            placeholder="Username"
-                            {...formik.getFieldProps('username')}
-                            />
-                        </div>
-                        {formik.errors.username && formik.touched.username ? <span>{formik.errors.username}</span> : <></>}
-
-                        <div className="input-group">
-                            <input required className={styles.formControl}
-                            type="email" 
-                            name="email"
-                            placeholder="Email"
-                            {...formik.getFieldProps('email')}
-                            />
-                        </div>
-                        {formik.errors.email && formik.touched.email ? <span>{formik.errors.email}</span> : <></>}
-
-                        <div className="input-group">
-                            <input required className={styles.formControl}
-                            type={`${show ?"text":"password"}`}
-                            name="password"
-                            placeholder="Password"
-                            {...formik.getFieldProps('password')}
-                            />
-                            <span className={styles.passwordLogo} onClick={()=> setShow(!show)}>
-                            <img src="/logo/Surveillhanz.png" width={25} height={25} />
-                            </span>
-                        </div>
-                        {formik.errors.password && formik.touched.password ? <span>{formik.errors.password}</span> : <></>}
-
-                        <div className="input-group">
-                            <input required className={styles.formControl}
-                            type={`${cshow ?"text":"password"}`}
-                            name="cpassword"
-                            placeholder="Confirm Password"
-                            {...formik.getFieldProps('cpassword')}
-                            />
-                            <span className={styles.passwordLogo} onClick={()=> setcShow(!cshow)}>
+                    <form className="d-flex flex-column" onSubmit={formik.handleSubmit}>
+                        <div className='d-flex flex-column gap-3'>
+                            <div className="input-group mt-4 d-flex flex-column justify-content-center">
+                                <input className={styles.formControl}
+                                type="text" 
+                                name="username"
+                                placeholder="Username"
+                                {...formik.getFieldProps('username')}
+                                />
+                                {formik.errors.username && formik.touched.username ? <span className={styles.guide}>{formik.errors.username}</span> : <></>}
+                            </div>
+                            <div className="input-group d-flex flex-column justify-content-center">
+                                <input className={styles.formControl}
+                                type="email" 
+                                name="email"
+                                placeholder="Email"
+                                {...formik.getFieldProps('email')}
+                                />
+                                {formik.errors.email && formik.touched.email ? <span className={styles.guide}>{formik.errors.email}</span> : <></>}
+                            </div>
+                            <div className="input-group d-flex flex-column justify-content-center">
+                                <input className={styles.formControl}
+                                type={`${show ?"text":"password"}`}
+                                name="password"
+                                placeholder="Password"
+                                {...formik.getFieldProps('password')}
+                                />
+                                <span className={styles.passwordLogo} onClick={()=> setShow(!show)}>
                                 <img src="/logo/Surveillhanz.png" width={25} height={25} />
-                            </span>
-                        </div>
-                        {formik.errors.cpassword && formik.touched.cpassword ? <span>{formik.errors.cpassword}</span> : <></>}
-
-                        <div className="input-button">
-                            <button type="submit" className={styles.formControlButton}>
-                                Register 
-                            </button>
+                                </span>
+                                {formik.errors.password && formik.touched.password ? <span className={styles.guide}>{formik.errors.password}</span> : <></>}
+                            </div>
+                            <div className="input-group d-flex flex-column justify-content-center">
+                                <input className={styles.formControl}
+                                type={`${cshow ?"text":"password"}`}
+                                name="cpassword"
+                                placeholder="Confirm Password"
+                                {...formik.getFieldProps('cpassword')}
+                                />
+                                <span className={styles.passwordLogo} onClick={()=> setcShow(!cshow)}>
+                                    <img src="/logo/Surveillhanz.png" width={25} height={25} />
+                                </span>
+                                {formik.errors.cpassword && formik.touched.cpassword ? <span className={styles.guide}>{formik.errors.cpassword}</span> : <></>}
+                            </div>
+                            <div className="input-button">
+                                <button type="submit" className={styles.formControlButton}>
+                                    Register 
+                                </button>
+                            </div>
                         </div>
                         
                     </form>
                         <p className="text-white mt-4 d-flex justify-content-center gap-2">
                             Already have an account?
-                            <Link href={'/login'} className="text-decoration-none text-white fw-bold">Sign In</Link>
+                            <Link href={'/login'} className={styles.signIn}>Sign In</Link>
                         </p>
                     </section>
                 </div>
             </div>
         </div>
-        <div className={styles.floatButton}>
-            <Link href="/"><img className={styles.LogoAppear} src="/logo/homeLogo.png" height={25} width={25}/>Home</Link>
-        </div>
+    </div>
+    <div className={styles.floatButton}>
+        <Link href="/"><img src="/logo/homeLogo.png" height={25} width={25}/>Home</Link>
+    </div>
     </div>
     );
   };

@@ -181,6 +181,12 @@
   border-radius: 10px;
   text-align: center;
   font-weight: bold;
+  text-decoration:none;
+  color:#e6e6e6;
+}
+
+.Links>a>p{
+  margin:0px !important;
 }
 
 .LinkLogo{

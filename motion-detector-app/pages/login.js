@@ -42,7 +42,7 @@ export default function Login(){
     <div>
     <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Surveillhanz | Log In</title>
+        <title>Log In</title>
         <link rel="icon" href="logo/Surveillhanz.ico"/>
     </Head>
     <div className={styles.container}>
@@ -69,6 +69,7 @@ export default function Login(){
                     <form className="d-flex flex-column" onSubmit={formik.handleSubmit}>
                         <div className='d-flex flex-column gap-3'>
                             <div className="input-group mt-4 d-flex flex-column justify-content-center">
+                                
                                 <input className={styles.formControl}
                                 type="email" 
                                 name="email"
@@ -98,7 +99,7 @@ export default function Login(){
                    
                         
                         <p className={styles.or}> or </p>
-                        <div className='d-flex flex-column gap-3'>
+                        <div className='d-flex flex-column gap-2'>
                             <div className="input-button">
                                 <button type="button" onClick={(handleGoogleSignin)} className={styles.formControlButton}>
                                     <img src="/images/googleLogo.png" alt="Google Logo" width={20} height={20} /> Sign In With Google 
@@ -114,7 +115,7 @@ export default function Login(){
                     
                         <p className="text-white mt-4 d-flex justify-content-center gap-2">
                             Dont have an account yet?
-                            <Link href={'/register'} className="text-decoration-none text-white fw-bold">Sign Up</Link>
+                            <Link href={'/register'} className={styles.signUp}>Sign Up</Link>
                         </p>
                     </section>
                 </div>
@@ -123,7 +124,7 @@ export default function Login(){
     </div>
     <div className={styles.floatButton}>
             <Link href="/"><img className={styles.LogoAppear} src="/logo/homeLogo.png" height={25} width={25}/>Home</Link>
-        </div>
+    </div>
     
     </div>
 

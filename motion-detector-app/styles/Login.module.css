@@ -7,6 +7,20 @@
     height: 100vh;
     padding:10%;
     margin: 5% 0% 5% 0%;
+    animation-duration:1.5s;
+    animation-name: animate-container;
+    animation-fill-mode: forwards;
+}
+
+@keyframes animate-container {
+0%{
+    transform: translate3d(0,-700px,0); opacity:0.25;
+}
+
+100%{
+    transform:  translate3d(0,0,0); opacity:1;
+}
+
 }
 
 .Logo{
@@ -147,8 +161,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    animation-duration:1s;
+    animation-name: animate-floatButton;
+    animation-fill-mode: forwards;
 }
 
+@keyframes animate-floatButton {
+0%{
+    transform: translate3d(700px,0,0); opacity:0.25;
+}
+
+100%{
+    transform:  translate3d(0,0,0); opacity:1;
+}
+
+}
 .floatButton a{
     background-color: #1c1c1c;
     color:#e6e6e6;
@@ -177,24 +204,44 @@
     transform: scale(1.05);
 }
 
+.floatButton a:active{
+    transform: scale(0.925);
+}
+
 .guide{
     text-align: center;
     color:#FFC107;
     animation-name:animateGuide;
     animation-duration:1s;
     animation-fill-mode: forwards;
-    transition:0.3s ease-in;
     margin-top:1px;
     font-size: 12px;
     position:absolute;
     z-index: 1020;
-    bottom:39px;
+    bottom:-17px;
     width: auto;
+    transition: 300ms ease-in-out;
+}
+
+.signUp{
+    text-decoration:none;
+    color:#e6e6e6;
+    font-weight:bold;
+}
+
+.signUp:hover{
+    transform: scale(1.05);
+    text-decoration:underline;
+    color:#e6e6e6;  
+}
+
+.signUp:active{
+    transform: scale(0.925);
 }
 
 @keyframes animateGuide {
     0%{
-        transform: scale(0.2);
+        transform: scale(0.4);
     }
     100%{
         transform: scale(1);
