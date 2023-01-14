@@ -71,8 +71,7 @@ export default function Login(){
                             type="email" 
                             name="email"
                             placeholder="Email"
-                            onChange={formik.handleChange}
-                            value={formik.values.email}
+                            {...formik.getFieldProps('email')}
                             />
                         </div>
                         <div className="input-group">
@@ -80,8 +79,7 @@ export default function Login(){
                             type={`${show ?"text":"password"}`}
                             name="password"
                             placeholder="Password"
-                            onChange={formik.handleChange}
-                            value={formik.values.password}
+                            {...formik.getFieldProps('password')}
                             />
                             <span className={styles.passwordLogo} onClick={()=> setShow(!show)}>
                                 <img src="/logo/Surveillhanz.png" width={25} height={25} />

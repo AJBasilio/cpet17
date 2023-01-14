@@ -48,8 +48,7 @@ const RegisterCard = () => {
                             type="text" 
                             name="username"
                             placeholder="Username"
-                            onChange={formik.handleChange}
-                            value={formik.values.username}
+                            {...formik.getFieldProps('username')}
                             />
                         </div>
                         <div className="input-group">
@@ -57,8 +56,7 @@ const RegisterCard = () => {
                             type="email" 
                             name="email"
                             placeholder="Email"
-                            onChange={formik.handleChange}
-                            value={formik.values.email}
+                            {...formik.getFieldProps('email')}
                             />
                         </div>
                         <div className="input-group">
@@ -66,8 +64,7 @@ const RegisterCard = () => {
                             type={`${show ?"text":"password"}`}
                             name="password"
                             placeholder="Password"
-                            onChange={formik.handleChange}
-                            value={formik.values.password}
+                            {...formik.getFieldProps('password')}
                             />
                             <span className={styles.passwordLogo} onClick={()=> setShow(!show)}>
                             <img src="/logo/Surveillhanz.png" width={25} height={25} />
@@ -78,8 +75,7 @@ const RegisterCard = () => {
                             type={`${cshow ?"text":"password"}`}
                             name="cpassword"
                             placeholder="Confirm Password"
-                            onChange={formik.handleChange}
-                            value={formik.values.cpassword}
+                            {...formik.getFieldProps('cpassword')}
                             />
                             <span className={styles.passwordLogo} onClick={()=> setcShow(!cshow)}>
                                 <img src="/logo/Surveillhanz.png" width={25} height={25} />
