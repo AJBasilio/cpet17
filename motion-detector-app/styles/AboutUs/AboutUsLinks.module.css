@@ -1,0 +1,232 @@
+.container {
+  height: 750px;
+  display: flex;
+  background-color: #1c1c1c;
+  justify-content:space-evenly;
+  align-items: center;
+  padding: 0% 5%;
+  gap:1%;
+  opacity:0;
+}
+
+.animateContainer{
+  animation-duration:1s;
+  animation-name: animate-container;
+  animation-fill-mode: forwards;
+}
+
+@keyframes animate-container {
+  0%{
+    transform: translate3d(-500px,0,0); opacity:0.25;
+  }
+ 
+  100%{
+    transform:  translate3d(0,0,0); opacity:1;
+  }
+  
+}
+
+
+.ContactsDiv{
+  color:#E6E6E6;
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+  margin-bottom:50px;
+  width:100%;
+  text-align: center;
+  opacity: 0;
+}
+
+.Contacts{
+  color:#E6E6E6;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  width:100%;
+  text-align: center;
+}
+
+
+.animateContactsDiv{
+  animation-duration:1s;
+  animation-name: animate-contactsDiv;
+  animation-fill-mode: forwards;
+}
+
+@keyframes animate-contactsDiv {
+  0%{
+    transform: rotate(0);opacity:0.25;
+  }
+  50%{
+    transform: rotate(0); opacity:0.50;
+  }
+  100%{
+    transform: rotate(0); opacity:1;
+  }
+  
+}
+
+
+
+/* FACE IMAGE */
+
+.idPicture{
+  
+  height: 250px;
+  width: 232px;
+  padding:5px;
+  border: 5px solid #4a4a4a;
+  margin-bottom: 10px;
+  opacity:0;
+}
+
+
+.animateIdPicture{
+  animation-duration:1.5s;
+  animation-name: animate-idPicture;
+  animation-fill-mode: forwards;
+  overflow: hidden;
+  transition: transform .5s ease;
+}
+
+@keyframes animate-idPicture {
+  0%{
+    transform: rotate(0);opacity:0.25;
+  }
+  100%{
+    transform:  rotate(0); opacity:1;
+  }
+}
+
+.animateIdPicture2{
+  animation-duration:1.5s;
+  animation-name: animate-idPicture2;
+  animation-fill-mode: forwards;
+  animation-delay:.5s;
+}
+
+
+@keyframes animate-idPicture2 {
+  0%{
+    transform: rotate(0);opacity:0.25;
+  }
+  100%{
+    transform:  rotate(0); opacity:1;
+  }
+  
+}
+
+.animateIdPicture3{
+  animation-duration:1.5s;
+  animation-name: animate-idPicture3;
+  animation-fill-mode: forwards;
+  animation-delay:0.7s;
+}
+
+@keyframes animate-idPicture3 {
+  0%{
+    transform: rotate(0);opacity:0.25;
+  }
+  100%{
+    transform: rotate(0); opacity:1;
+  }
+  
+}
+
+.animateIdPicture4{
+  animation-duration:1.5s;
+  animation-name: animate-idPicture4;
+  animation-fill-mode: forwards;
+  animation-delay:0.9s;
+}
+
+@keyframes animate-idPicture4 {
+  0%{
+    transform: rotate(0); opacity:0.3;
+  }
+  100%{
+    transform: rotate(0); opacity:1;
+  }
+  
+}
+
+.animateIdPicture5{
+  animation-duration:1.5s;
+  animation-name: animate-idPicture5;
+  animation-fill-mode: forwards;
+  animation-delay:1.1s;
+}
+
+@keyframes animate-idPicture5 {
+  0%{
+    transform: rotate(0); opacity:0.3;
+  }
+  100%{
+    transform: rotate(0); opacity:1;
+  }
+  
+}
+
+
+/* LOGO STYLINGS */
+
+.Links>a{
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  gap:10px;
+  margin-top: 10px;
+  background-color: #4a4a4a;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.LinkLogo{
+  height: 10%;
+  width: 20%;
+  padding:5px;
+  color:#E6E6E6;
+  background-color: #e6e6e662;
+  border-radius: 10px;
+}
+
+/* ON HOVER CHANGELOGO STYLINGS */
+
+a:hover .LinkLogo{
+  display:none; 
+
+}
+
+a:hover .LinkLogoColored{
+  display:inline;
+  opacity:1;
+  transition:1s ease-in;
+}
+
+.LinkLogoColored{
+  height: 10%;
+  width: 20%;
+  padding:5px;
+  display: none;
+  background-color: #e6e6e662;
+  border-radius: 10px;
+  opacity: 0;
+}
+
+.fbLink:hover{
+  box-shadow: inset 300px 0 0 0 rgba(41, 90, 224, 0.75);
+  transition: 0.4s ease-in;
+}
+
+.gmLink:hover{
+  box-shadow: inset 300px 0 0 0 rgb(231, 17, 17, 0.75);
+  transition: 0.4s ease-in;
+}
+
+
+
+
+
+

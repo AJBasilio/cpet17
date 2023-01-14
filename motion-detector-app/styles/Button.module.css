@@ -1,0 +1,50 @@
+.primary {
+  width: 82px;
+  height: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16.5px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color: #E6E6E6;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  background-color: rgba(0, 0, 0, 0);
+  border:none;
+
+}
+
+.primary>a:hover {
+  color: #E6E6E6;
+  transition: 0.1s;
+  cursor: pointer;
+}
+
+.secondary {
+  width: 82px;
+  height: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16.5px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #6D6D6D;
+  background-color: rgba(0, 0, 0, 0);
+  border:none;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  justify-content: center;
+}
+
+.secondary>a:hover {
+  color: #E6E6E6;
+  transition: 0.1s;
+  cursor: pointer;
+}

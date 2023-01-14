@@ -1,0 +1,276 @@
+.container {
+  min-height: 900px;
+  height: auto;
+  background-image: url("/images/BackgroundImage.png");
+  display:block;
+  align-items: center;
+  padding-top: 75px;
+  margin-bottom:5%;
+}
+
+.containerText{
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  padding:45px 90px;
+  width: 100%;
+
+}
+
+.containerText > h1 {
+  font-weight: 600;
+  font-size: 65px;
+  line-height: 74px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  width: 607px;
+  height: 110px;
+  margin: 0px;
+}
+
+/* Table Styling */
+
+.containerTable{
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+  width:100%;
+  height: auto;
+}
+
+.Table {
+	border: 2px ridge;
+  border-color:#e6e6e6 ;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  width: 80%;
+  background-color: #1c1c1c;
+  border-radius: 10px;  
+}
+
+/* Table Head */
+
+.Table>thead{
+  color:#010101;
+  display:table-header-group;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #e1e1e1;
+  
+}
+
+.Table>thead>tr>th{
+  font-weight: 600;
+  padding:10px;
+}
+  
+.Table>tbody>tr>{
+  display: table-row;
+	color: #fff;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+/* Table Cells */
+.Table>tbody>tr> td {
+  display:table-cell;
+	color: #fff;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding:8px;
+}
+
+.Table> tbody tr:nth-of-type(even) {
+  background-color: #242424;
+}
+
+/* Table Action Styling */
+.TableAction{
+  font-weight: 550;
+  cursor: pointer;
+  background-color: rgba(1, 1, 1, 0);
+  color:#e6e6e6;
+  border-color: #e6e6e6;
+  border-radius:10px;
+  padding:10px;
+}
+
+.TableAction:hover{
+  background-color: #e6e6e6;
+  color:#010101;
+  transition:0.3s;
+}
+
+.TableAction:active{
+  transform: scale(0.90);
+}
+
+/* Pagination */
+
+.pagination{
+  font-weight: 500;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  color:#e1e1e1;
+  gap:20px;
+  background-color:#242424;
+  padding:20px;
+  margin-left:40%;
+  margin-top:25px;
+  border-radius: 10px;
+}
+
+.pagination>button{
+  font-weight: 550;
+  cursor: pointer;
+  border-color: #e6e6e6;
+  border-radius:10px;
+  padding:6px;
+}
+
+.pagination>button:hover{
+  font-weight: 550;
+  cursor: pointer;
+  background-color: rgba(1, 1, 1, 0);
+  color:#e6e6e6;
+  border-color: #e6e6e6;
+  border-radius:10px;
+  padding:6px;
+}
+
+.pagination input{
+  margin-left:5px;
+  background-color:#e6e6e6;
+  color:#242424;
+  border:#242424 1px solid;
+  padding:5px;
+  border-radius: 5px;
+  width:100px;
+  text-align: center;
+  font-weight: 550;
+}
+
+.pagination select{
+  background-color:#e6e6e6;
+  color:#242424;
+  border:#242424 1px solid;
+  padding:5px;
+  border-radius: 5px;
+  width:100px;
+  text-align: center;
+  font-weight: 550;
+}
+
+.logo{
+  display: inline;
+  height:15px;
+  width: 15px;
+  margin-left:5px;
+}
+
+.logoPagination{
+  display: inline;
+  height:15px;
+  width: 15px;
+}
+
+.search{
+  font-size: 1.1rem;
+  font-weight: 500;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  color:#e1e1e1;
+  padding:10px;
+  margin-left:72%;
+  margin-bottom:5px;
+  border-radius: 10px;
+}
+
+.searchInput{
+  font-size: 0.9rem;
+  margin-left:10px;
+  background-color:#e6e6e6;
+  color:#242424;
+  border:#242424 1px solid;
+  padding:5px;
+  border-radius: 5px;
+  width:150px;
+  text-align: start;
+  font-weight: 550;
+}
+
+/* Modal Styling */
+
+.modalBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(1, 1, 1, 0.718);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5%;
+
+}
+
+.modalContainer {
+  width: 800px;
+  height: 600px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+
+}
+
+.modalContainer .title {
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.modalContainer .body {
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+.modalContainer .body > img {
+  width: 90%;
+  height: 300px;
+}
+
+.modalContainer .footer {
+  flex: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContainer .footer button {
+  width: 150px;
+  height: 45px;
+  margin: 10px;
+  border: none;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#cancelBtn {
+  background-color: crimson;
+}

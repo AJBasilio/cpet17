@@ -1,0 +1,64 @@
+.container{
+    display: flex;
+    width:100%;
+    justify-content: center;
+    flex-direction:column;
+    align-items: center;
+    height: 700px;
+}
+
+.animateContainer{
+    animation-duration:1s;
+    animation-name: animate-container;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes animate-container {
+    0%{
+      transform: translate3d(500px,0,0); opacity:0.25;
+    }
+   
+    100%{
+      transform:  translate3d(0,0,0); opacity:1;
+    }
+    
+  }
+
+.containerImage>img{
+    width: 100%;
+    height: 100%;
+    border: 5px solid #4a4a4a;
+    margin:0px;
+}
+
+.teamNameContainer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: 100%;
+    height: auto;
+
+}
+
+.teamName{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: 100%;
+    height: auto;
+    margin-left:16.75%;
+}
+
+.teamName>h1{
+    font-weight: 700;
+    font-size: 150%;
+    line-height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: start;
+    color: #e6e6e6;
+    padding:0px 20px;
+    margin:0px;
+    background-color: #4a4a4a;
+}
