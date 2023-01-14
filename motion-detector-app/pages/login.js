@@ -7,6 +7,8 @@ import LogInCard from "../components/LogInCard.jsx";
 import Link from "next/link";
 import { useState} from 'react';
 import {getSession, useSession, signIn, signOut } from 'next-auth/react';
+import {useFormik} from 'formik';
+
 
 export default function Login(){
 
@@ -20,6 +22,19 @@ export default function Login(){
     // Github Handler function
     async function handleGithubSignin(){
         signIn('github', {callbackUrl: "http://localhost:3000/Dashboard"})
+    }
+
+    // Login Formik
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: '',
+        },
+        onSubmit
+    });
+
+    async function onSubmit(values) {
+        console.log(values)
     }
 
     return(
@@ -48,12 +63,16 @@ export default function Login(){
                 <div className="d-flex flex-column justify-content-center align-items-center">
                     <h4  className='text-white fw-bold'> SIGN IN </h4>
                     <section className={`${styles.formContainer}`}>
-                    <form className="d-flex flex-column gap-4">
+
+
+                    <form className="d-flex flex-column gap-4" onSubmit={formik.handleSubmit}>
                         <div className="input-group mt-4">
                             <input className={styles.formControl}
                             type="email" 
                             name="email"
                             placeholder="Email"
+                            onChange={formik.handleChange}
+                            value={formik.values.email}
                             />
                         </div>
                         <div className="input-group">
@@ -61,6 +80,8 @@ export default function Login(){
                             type={`${show ?"text":"password"}`}
                             name="password"
                             placeholder="Password"
+                            onChange={formik.handleChange}
+                            value={formik.values.password}
                             />
                             <span className={styles.passwordLogo} onClick={()=> setShow(!show)}>
                                 <img src="/logo/Surveillhanz.png" width={25} height={25} />
@@ -68,7 +89,7 @@ export default function Login(){
                         </div>
                         <div className="input-button">
                             <button type="submit" className={styles.formControlButton}>
-                                <Link href={'/Dashboard'} className="text-decoration-none text-white">Sign In</Link>
+                                Sign In
                             </button>
                         </div>
                    

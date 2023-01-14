@@ -2,6 +2,7 @@
 import Link from "next/link";
 import styles from "../styles/Register.module.css";
 import { useState } from 'react';
+import {useFormik} from 'formik';
 
 
 const RegisterCard = () => {
@@ -9,10 +10,20 @@ const RegisterCard = () => {
     const[show, setShow] = useState(false)
     const[cshow, setcShow] = useState(false)
 
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [cpassword, setCpassword] = useState('');
+    // Register Formik
+    const formik = useFormik({
+        initialValues: {
+            username: '',
+            email: '',
+            password: '',
+            cpassword: ''
+        },
+        onSubmit
+    });
+
+    async function onSubmit(values) {
+        console.log(values)
+    }
 
     return (
     <div className={styles.container}>
@@ -31,12 +42,14 @@ const RegisterCard = () => {
                     <h4  className='text-white fw-bold'> REGISTER </h4>
                     <section className={`${styles.formContainer}`}>
 
-                    <form className="d-flex flex-column gap-4">
+                    <form className="d-flex flex-column gap-4" onSubmit={formik.handleSubmit}>
                         <div className="input-group mt-4">
                             <input required className={styles.formControl}
-                            type="email" 
+                            type="text" 
                             name="username"
                             placeholder="Username"
+                            onChange={formik.handleChange}
+                            value={formik.values.username}
                             />
                         </div>
                         <div className="input-group">
@@ -44,6 +57,8 @@ const RegisterCard = () => {
                             type="email" 
                             name="email"
                             placeholder="Email"
+                            onChange={formik.handleChange}
+                            value={formik.values.email}
                             />
                         </div>
                         <div className="input-group">
@@ -51,6 +66,8 @@ const RegisterCard = () => {
                             type={`${show ?"text":"password"}`}
                             name="password"
                             placeholder="Password"
+                            onChange={formik.handleChange}
+                            value={formik.values.password}
                             />
                             <span className={styles.passwordLogo} onClick={()=> setShow(!show)}>
                             <img src="/logo/Surveillhanz.png" width={25} height={25} />
@@ -61,6 +78,8 @@ const RegisterCard = () => {
                             type={`${cshow ?"text":"password"}`}
                             name="cpassword"
                             placeholder="Confirm Password"
+                            onChange={formik.handleChange}
+                            value={formik.values.cpassword}
                             />
                             <span className={styles.passwordLogo} onClick={()=> setcShow(!cshow)}>
                                 <img src="/logo/Surveillhanz.png" width={25} height={25} />
