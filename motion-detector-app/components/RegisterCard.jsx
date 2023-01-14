@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "../styles/Register.module.css";
 import { useState } from 'react';
 import {useFormik} from 'formik';
-
+import {registerValidate} from "../lib/validate";
 
 const RegisterCard = () => {
 
@@ -18,6 +18,7 @@ const RegisterCard = () => {
             password: '',
             cpassword: ''
         },
+        validate: registerValidate,
         onSubmit
     });
 
@@ -51,6 +52,8 @@ const RegisterCard = () => {
                             {...formik.getFieldProps('username')}
                             />
                         </div>
+                        {formik.errors.username && formik.touched.username ? <span>{formik.errors.username}</span> : <></>}
+
                         <div className="input-group">
                             <input required className={styles.formControl}
                             type="email" 
@@ -59,6 +62,8 @@ const RegisterCard = () => {
                             {...formik.getFieldProps('email')}
                             />
                         </div>
+                        {formik.errors.email && formik.touched.email ? <span>{formik.errors.email}</span> : <></>}
+
                         <div className="input-group">
                             <input required className={styles.formControl}
                             type={`${show ?"text":"password"}`}
@@ -70,6 +75,8 @@ const RegisterCard = () => {
                             <img src="/logo/Surveillhanz.png" width={25} height={25} />
                             </span>
                         </div>
+                        {formik.errors.password && formik.touched.password ? <span>{formik.errors.password}</span> : <></>}
+
                         <div className="input-group">
                             <input required className={styles.formControl}
                             type={`${cshow ?"text":"password"}`}
@@ -81,6 +88,8 @@ const RegisterCard = () => {
                                 <img src="/logo/Surveillhanz.png" width={25} height={25} />
                             </span>
                         </div>
+                        {formik.errors.cpassword && formik.touched.cpassword ? <span>{formik.errors.cpassword}</span> : <></>}
+
                         <div className="input-button">
                             <button type="submit" className={styles.formControlButton}>
                                 Register 

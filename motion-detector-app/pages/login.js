@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useState} from 'react';
 import {getSession, useSession, signIn, signOut } from 'next-auth/react';
 import {useFormik} from 'formik';
+import login_validate from '../lib/validate';
 
 
 export default function Login(){
@@ -30,7 +31,8 @@ export default function Login(){
             email: '',
             password: '',
         },
-        onSubmit
+        validate: login_validate,
+        onSubmit,
     });
 
     async function onSubmit(values) {
@@ -74,6 +76,7 @@ export default function Login(){
                             {...formik.getFieldProps('email')}
                             />
                         </div>
+                        {formik.errors.email && formik.touched.email ? <span>{formik.errors.email}</span> : <></>}
                         <div className="input-group">
                             <input className={styles.formControl}
                             type={`${show ?"text":"password"}`}
@@ -85,6 +88,7 @@ export default function Login(){
                                 <img src="/logo/Surveillhanz.png" width={25} height={25} />
                             </span>
                         </div>
+                        {formik.errors.password && formik.touched.password ? <span>{formik.errors.password}</span> : <></>}
                         <div className="input-button">
                             <button type="submit" className={styles.formControlButton}>
                                 Sign In
