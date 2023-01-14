@@ -27,21 +27,3 @@ function AboutUs() {
 }
 
 export default AboutUs;
-
-// Redirect to login page if access pages that needed session (logged in)
-export async function getServerSideProps({req}) {
-  const session = await getSession({req})
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false
-      }
-    }
-  }
-
-  return {
-    props: { session }
-  }
-}

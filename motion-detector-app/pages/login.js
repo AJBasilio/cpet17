@@ -4,7 +4,7 @@ import Head from 'next/head';
 import 'bootstrap/dist/css/bootstrap.css';
 import styles from "../styles/Login.module.css";
 import Link from "next/link";
-import { useState} from 'react';
+import {useState} from 'react';
 import {getSession, useSession, signIn, signOut } from 'next-auth/react';
 import {useFormik} from 'formik';
 import login_validate from '../lib/validate';
@@ -66,45 +66,49 @@ export default function Login(){
                     <section className={`${styles.formContainer}`}>
 
 
-                    <form className="d-flex flex-column gap-4" onSubmit={formik.handleSubmit}>
-                        <div className="input-group mt-4">
-                            <input className={styles.formControl}
-                            type="email" 
-                            name="email"
-                            placeholder="Email"
-                            {...formik.getFieldProps('email')}
-                            />
-                        </div>
-                        {formik.errors.email && formik.touched.email ? <span>{formik.errors.email}</span> : <></>}
-                        <div className="input-group">
-                            <input className={styles.formControl}
-                            type={`${show ?"text":"password"}`}
-                            name="password"
-                            placeholder="Password"
-                            {...formik.getFieldProps('password')}
-                            />
-                            <span className={styles.passwordLogo} onClick={()=> setShow(!show)}>
-                                <img src="/logo/Surveillhanz.png" width={25} height={25} />
-                            </span>
-                        </div>
-                        {formik.errors.password && formik.touched.password ? <span>{formik.errors.password}</span> : <></>}
-                        <div className="input-button">
-                            <button type="submit" className={styles.formControlButton}>
-                                Sign In
-                            </button>
+                    <form className="d-flex flex-column" onSubmit={formik.handleSubmit}>
+                        <div className='d-flex flex-column gap-3'>
+                            <div className="input-group mt-4 d-flex flex-column justify-content-center">
+                                <input className={styles.formControl}
+                                type="email" 
+                                name="email"
+                                placeholder="Email"
+                                {...formik.getFieldProps('email')}
+                                />
+                                {formik.errors.email && formik.touched.email ? <span className={styles.guide}>{formik.errors.email}</span> : <></>}
+                            </div>
+                            <div className="input-group d-flex flex-column justify-content-center">
+                                <input className={styles.formControl}
+                                type={`${show ?"text":"password"}`}
+                                name="password"
+                                placeholder="Password"
+                                {...formik.getFieldProps('password')}
+                                />
+                                <span className={styles.passwordLogo} onClick={()=> setShow(!show)}>
+                                    <img src="/logo/Surveillhanz.png" width={25} height={25} />
+                                </span>
+                                {formik.errors.password && formik.touched.password ? <span  className={styles.guide}>{formik.errors.password}</span> : <></>}
+                            </div>
+                            <div className="input-button">
+                                <button type="submit" className={styles.formControlButton}>
+                                    Sign In
+                                </button>
+                            </div>
                         </div>
                    
-
+                        
                         <p className={styles.or}> or </p>
-                        <div className="input-button">
-                            <button type="button" onClick={(handleGoogleSignin)} className={styles.formControlButton}>
-                                <img src="/images/googleLogo.png" alt="Google Logo" width={20} height={20} /> Sign In With Google 
-                            </button>
-                        </div>
-                        <div className="input-button">
-                            <button type="button" onClick={handleGithubSignin} className={styles.formControlButton}>
-                            <img src="/logo/githubLogoWhite.jpg" alt="Github Logo" width={20} height={20} /> Sign In With Github 
-                            </button>
+                        <div className='d-flex flex-column gap-3'>
+                            <div className="input-button">
+                                <button type="button" onClick={(handleGoogleSignin)} className={styles.formControlButton}>
+                                    <img src="/images/googleLogo.png" alt="Google Logo" width={20} height={20} /> Sign In With Google 
+                                </button>
+                            </div>
+                            <div className="input-button">
+                                <button type="button" onClick={handleGithubSignin} className={styles.formControlButton}>
+                                <img src="/logo/githubLogoWhite.jpg" alt="Github Logo" width={20} height={20} /> Sign In With Github 
+                                </button>
+                            </div>
                         </div>
                     </form>
                     
