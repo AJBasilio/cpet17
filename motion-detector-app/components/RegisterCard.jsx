@@ -1,13 +1,18 @@
 
 import Link from "next/link";
 import styles from "../styles/Register.module.css";
-import {useState} from 'react';
+import { useState } from 'react';
 
 
 const RegisterCard = () => {
 
     const[show, setShow] = useState(false)
     const[cshow, setcShow] = useState(false)
+
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [cpassword, setCpassword] = useState('');
 
     return (
     <div className={styles.container}>
@@ -25,6 +30,7 @@ const RegisterCard = () => {
                 <div className="d-flex flex-column justify-content-center align-items-center">
                     <h4  className='text-white fw-bold'> REGISTER </h4>
                     <section className={`${styles.formContainer}`}>
+
                     <form className="d-flex flex-column gap-4">
                         <div className="input-group mt-4">
                             <input required className={styles.formControl}

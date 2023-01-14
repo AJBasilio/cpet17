@@ -50,6 +50,21 @@ app.post('/camera', (req, res) => {
     });
 });
 
+app.post('/register', (req, res) => {
+    const {username, email, password, cpassword} = req.body;
+
+    connection.query(
+        'INSERT INTO motion_users (username, email, password, cpassword) VALUES (?,?,?,?)',
+        [username, email, password, cpassword],
+        (err, results) => {
+          if (err) {
+            return res.status(500).json({ error: err.message });
+          }
+          res.json({ message: 'Data inserted successfully' });
+        }
+      );
+})
+
 app.listen(port, () => {
     console.log(`Server: http://localhost:${port}`);
 });
