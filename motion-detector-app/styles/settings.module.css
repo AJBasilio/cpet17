@@ -7,6 +7,20 @@
     height: 100vh;
     padding:10%;
     margin: 5% 0% 5% 0%;
+    animation-duration:1.5s;
+    animation-name: animate-container;
+    animation-fill-mode: forwards;
+}
+
+@keyframes animate-container {
+0%{
+    transform: translate3d(0,-700px,0); opacity:0.25;
+}
+
+100%{
+    transform:  translate3d(0,0,0); opacity:1;
+}
+
 }
 
 .Logo{
@@ -144,6 +158,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    animation-duration:1s;
+    animation-name: animate-floatButton;
+    animation-fill-mode: forwards;
+}
+
+@keyframes animate-floatButton {
+0%{
+    transform: translate3d(700px,0,0); opacity:0.25;
+}
+
+100%{
+    transform:  translate3d(0,0,0); opacity:1;
+}
+
 }
 
 .floatButton a{
