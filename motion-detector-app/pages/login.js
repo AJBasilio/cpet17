@@ -112,6 +112,13 @@ export default function Login(){
                                 </span>
                                 {formik.errors.password && formik.touched.password ? <span  className={styles.guide}>{formik.errors.password}</span> : <></>}
                             </div>
+                            <div>
+                                <span className='justify-content-end d-flex'>
+                                    <Link href='/forgotPassword' className={styles.forgotPassword}>
+                                        Forgot Password?
+                                    </Link>
+                                </span>
+                            </div>
                             <div className="input-button">
                                 <button type="submit" className={styles.formControlButton}>
                                     Sign In

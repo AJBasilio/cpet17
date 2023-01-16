@@ -227,6 +227,7 @@
     text-decoration:none;
     color:#e6e6e6;
     font-weight:bold;
+    transition:0.3s;
 }
 
 .signUp:hover{
@@ -236,6 +237,24 @@
 }
 
 .signUp:active{
+    transform: scale(0.925);
+}
+
+.forgotPassword{
+    text-decoration:none;
+    color:#e6e6e6;
+    font-weight:bold;
+    align-items: center;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.forgotPassword:hover{
+    text-decoration:underline;
+    color:#e6e6e6;  
+}
+
+.forgotPassword:active{
     transform: scale(0.925);
 }
 
