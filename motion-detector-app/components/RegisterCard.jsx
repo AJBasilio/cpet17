@@ -28,7 +28,6 @@ const RegisterCard = () => {
             username: '',
             email: '',
             password: '',
-            cpassword: ''
         },
         validate: registerValidate,
         onSubmit
@@ -85,26 +84,45 @@ const RegisterCard = () => {
                     <section className={`${styles.formContainer}`}>
 
                     <form className="d-flex flex-column" onSubmit={formik.handleSubmit}>
-                        <div className='d-flex flex-column gap-3'>
+                        <div className='d-flex flex-column'>
                             <div className="input-group mt-4 d-flex flex-column justify-content-center">
+                                <div className='gap-2 d-flex flex-row justify-content-between'>
+                                    <div className={styles.inputLabel}>
+                                        Username
+                                    </div>
+                                    {formik.errors.username && formik.touched.username ? 
+                                    <span className={styles.guide}>{formik.errors.username}</span> : <></>}
+                                </div>
                                 <input className={styles.formControl}
                                 type="text" 
                                 name="username"
                                 placeholder="Username"
                                 {...formik.getFieldProps('username')}
                                 />
-                                {formik.errors.username && formik.touched.username ? <span className={styles.guide}>{formik.errors.username}</span> : <></>}
                             </div>
                             <div className="input-group d-flex flex-column justify-content-center">
+                                <div className='gap-2 d-flex flex-row justify-content-between'>
+                                    <div className={styles.inputLabel}>
+                                        Email
+                                    </div>
+                                    {formik.errors.email && formik.touched.email ? 
+                                    <span className={styles.guide}>{formik.errors.email}</span> : <></>}
+                                </div>
                                 <input className={styles.formControl}
                                 type="email" 
                                 name="email"
                                 placeholder="Email"
                                 {...formik.getFieldProps('email')}
                                 />
-                                {formik.errors.email && formik.touched.email ? <span className={styles.guide}>{formik.errors.email}</span> : <></>}
                             </div>
                             <div className="input-group d-flex flex-column justify-content-center">
+                                <div className='gap-2 d-flex flex-row justify-content-between'>
+                                    <div className={styles.inputLabel}>
+                                        Password
+                                    </div>
+                                    {formik.errors.password && formik.touched.password ? 
+                                    <span className={styles.guide}>{formik.errors.password}</span> : <></>}
+                                </div>
                                 <input className={styles.formControl}
                                 type={`${show ?"text":"password"}`}
                                 name="password"
@@ -114,19 +132,21 @@ const RegisterCard = () => {
                                 <span className={styles.passwordLogo} onClick={()=> setShow(!show)}>
                                 <img src="/logo/Surveillhanz.png" width={25} height={25} />
                                 </span>
-                                {formik.errors.password && formik.touched.password ? <span className={styles.guide}>{formik.errors.password}</span> : <></>}
                             </div>
                             <div className="input-group d-flex flex-column justify-content-center">
+                                <div className='gap-2 d-flex flex-row justify-content-between'>
+                                    <div className={styles.inputLabel}>
+                                        Confirm Password
+                                    </div>
+                                </div>
                                 <input className={styles.formControl}
-                                type={`${cshow ?"text":"password"}`}
+                                type="password"
                                 name="cpassword"
                                 placeholder="Confirm Password"
-                                {...formik.getFieldProps('cpassword')}
                                 />
                                 <span className={styles.passwordLogo} onClick={()=> setcShow(!cshow)}>
                                     <img src="/logo/Surveillhanz.png" width={25} height={25} />
                                 </span>
-                                {formik.errors.cpassword && formik.touched.cpassword ? <span className={styles.guide}>{formik.errors.cpassword}</span> : <></>}
                             </div>
                             <div className="input-button">
                                 <button type="submit" className={styles.formControlButton}>

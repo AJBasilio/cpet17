@@ -72,7 +72,7 @@
 
 .formControl {
     display: block;
-    width: 320px !important;
+    width: auto !important;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;
@@ -87,13 +87,14 @@
     border-radius: 5px !important;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     text-align: center;
-    color:white;
-    margin-top:10px;
+    color:white;    
+    margin-bottom:10px;
 }
 
 .formControlButton{
     display: block;
-    width: 320px !important;
+    width: 100% ;
+    min-width: 320px !important;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: bold;
@@ -138,7 +139,7 @@
     border: none;
     position: absolute;
     right:0px;
-    top:13px;
+    top:31px;
     z-index: 99;
     height: 30px;
     cursor: pointer;
@@ -209,18 +210,25 @@
 }
 
 .guide{
-    text-align: center;
+    text-align: end;
     color:#FFC107;
     animation-name:animateGuide;
     animation-duration:1s;
     animation-fill-mode: forwards;
-    margin-top:1px;
-    font-size: 12px;
-    position:absolute;
+    font-size: 11px;
     z-index: 1020;
-    bottom:-17px;
     width: auto;
     transition: 300ms ease-in-out;
+    display:flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom:5px;
+}
+
+.inputLabel{
+    color:#e6e6e6;
+    font-weight: bold;
+    margin-bottom:5px;
 }
 
 .signUp{

@@ -89,18 +89,31 @@ export default function Login(){
 
 
                     <form className="d-flex flex-column" onSubmit={formik.handleSubmit}>
-                        <div className='d-flex flex-column gap-3'>
+                        <div className='d-flex flex-column'>
                             <div className="input-group mt-4 d-flex flex-column justify-content-center">
-                                
+                                <div className='gap-2 d-flex flex-row justify-content-between'>
+                                    <div className={styles.inputLabel}>
+                                        Email
+                                    </div>
+                                    {formik.errors.email && formik.touched.email ? <div className={styles.guide}>{formik.errors.email}</div> : <></>}
+                                </div>
                                 <input className={styles.formControl}
                                 type="email" 
                                 name="email"
                                 placeholder="Email"
                                 {...formik.getFieldProps('email')}
                                 />
-                                {formik.errors.email && formik.touched.email ? <span className={styles.guide}>{formik.errors.email}</span> : <></>}
+                                
                             </div>
                             <div className="input-group d-flex flex-column justify-content-center">
+                                <div className='gap-2 d-flex flex-row justify-content-between'>
+                                <span className={styles.inputLabel}>
+                                    Password
+                                </span>
+                                {formik.errors.password && formik.touched.password ? 
+                                <span  className={styles.guide}>{formik.errors.password}</span> : <></>}
+                                </div>
+                               
                                 <input className={styles.formControl}
                                 type={`${show ?"text":"password"}`}
                                 name="password"
@@ -110,10 +123,9 @@ export default function Login(){
                                 <span className={styles.passwordLogo} onClick={()=> setShow(!show)}>
                                     <img src="/logo/Surveillhanz.png" width={25} height={25} />
                                 </span>
-                                {formik.errors.password && formik.touched.password ? <span  className={styles.guide}>{formik.errors.password}</span> : <></>}
                             </div>
                             <div>
-                                <span className='justify-content-end d-flex'>
+                                <span className='justify-content-end d-flex my-2'>
                                     <Link href='/forgotPassword' className={styles.forgotPassword}>
                                         Forgot Password?
                                     </Link>

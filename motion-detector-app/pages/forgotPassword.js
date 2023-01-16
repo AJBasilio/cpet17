@@ -6,6 +6,7 @@ import {useFormik} from 'formik';
 import forgotPassword from '../lib/validate';
 import * as React from "react";
 
+
 export default function Login(){
 
     // Forgot Password Formik
@@ -41,24 +42,30 @@ export default function Login(){
             <div className="card-body">
                 <div className="d-flex flex-column justify-content-center align-items-center">
                     <h4  className='text-white fw-bold'> Forgot Password? </h4>
-                    <span> <p className='text-white'> We'll send you an email, please input your email address.</p></span>
+                    <span> <p className='text-white'> Please input your email address for verification.</p></span>
                     <section className={`${styles.formContainer}`}>
                         <form className="d-flex flex-column" onSubmit={formik.handleSubmit}>
-                            <div className='d-flex flex-column gap-3'>
+                            <div className='d-flex flex-column gap-1'>
                                 <div className="input-group mt-4 d-flex flex-column justify-content-center">
-                                    
+                                    <div className='gap-2 d-flex flex-row justify-content-between'>
+                                        <div className={styles.inputLabel}>
+                                            Email
+                                        </div>
+                                        {formik.errors.email && formik.touched.email ? <span className={styles.guide}>{formik.errors.email}</span> : <></>}
+                                    </div>
                                     <input className={styles.formControl}
                                     type="email" 
                                     name="email"
                                     placeholder="Email"
                                     {...formik.getFieldProps('email')}
                                     />
-                                    {formik.errors.email && formik.touched.email ? <span className={styles.guide}>{formik.errors.email}</span> : <></>}
+                                    
                                 </div>
+                                
                                 <div className="input-button">
-                                    <button type="submit" className={styles.formControlButton}>
-                                        Send
-                                    </button>
+                                    <Link href="/resetPassword" type="submit" className={styles.formControlButton} style={{textDecoration:'none'}}>
+                                        Confirm
+                                    </Link>
                                 </div>
                             </div>
                         </form>
