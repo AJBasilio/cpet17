@@ -37,7 +37,7 @@ export default NextAuth({
                 console.log(json.message)
                 
                 if (json.message === "Success") {
-                    return {name, email_json};
+                    return {name, email};
                 } else {
                     throw new Error("Invalid Credentials");
                 }

@@ -51,15 +51,12 @@ export default function Login(){
             email: values.email,
             password: values.password,
             callbackUrl: "http://localhost:3000/Dashboard"
-        }).then(({ok, error}) => {
-            if (ok) {
-                router.push(status.url)
-            } else {
-                notify("error", "Invalid Credentials.")
-            }
         })
-        console.log(status)
-        
+        if (status.ok) {
+            router.push(status.url)
+        } else {
+            notify("error", "Invalid Credentials.")
+        }        
     }
 
     return(
