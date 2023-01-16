@@ -12,7 +12,8 @@ import button from "../styles/Button.module.css";
 import Link from "next/link";
 import Dropdown from "react-bootstrap/Dropdown";
 
-function Dashboard() {
+
+function Dashboard( {users} ) {
   const {data:session} = useSession()
 
   const data = useMemo(()=>
@@ -208,7 +209,8 @@ function Dashboard() {
     )
   }
 
-
+  const image_head = 'data:image/jpeg;base64,';
+  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   if (session) {
     return (
       <div>
@@ -365,8 +367,20 @@ function Dashboard() {
                 </select>
               </div>
           </div>
-        {/* <DashboardContent/> */}
+
         </motion.div>
+        
+        {/* Sample fetching data */}
+        <div>
+            <h1>Motion Detected Data</h1>
+            {users.map(user => (
+                <div key={user.id}>
+                    <p>{ user.date_time }</p>
+                    <img src={image_head + Buffer.from(user.captured_image).toString('utf-8')}></img>
+                </div>
+            ))}
+        </div>
+
         <Footer/>
       </div>
     );
@@ -383,6 +397,8 @@ export default Dashboard;
 // Redirect to login page if access pages that needed session (logged in)
 export async function getServerSideProps({req}) {
   const session = await getSession({req})
+  const res = await fetch('http://localhost:4000/motion-list');
+  const data = await res.json();
 
   if (!session) {
     return {
@@ -394,6 +410,6 @@ export async function getServerSideProps({req}) {
   }
 
   return {
-    props: { session }
+    props: { session, users: data }
   }
 }
