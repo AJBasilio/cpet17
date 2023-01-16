@@ -9,9 +9,18 @@ import {getSession, useSession, signIn, signOut } from 'next-auth/react';
 import {useFormik} from 'formik';
 import login_validate from '../lib/validate';
 import { useRouter } from 'next/router';
-
+import toast from "../components/Toast";
+import * as React from "react";
 
 export default function Login(){
+
+    const notify = React.useCallback((type, message) => {
+        toast({ type, message });
+      }, []);
+
+    const dismiss = React.useCallback(() => {
+    toast.dismiss();
+    }, []);
 
     const[show, setShow] = useState(false)
     const router = useRouter()
@@ -42,9 +51,15 @@ export default function Login(){
             email: values.email,
             password: values.password,
             callbackUrl: "http://localhost:3000/Dashboard"
+        }).then(({ok, error}) => {
+            if (ok) {
+                router.push(status.url)
+            } else {
+                notify("error", "Invalid Credentials.")
+            }
         })
         console.log(status)
-        if (status.ok) router.push(status.url)
+        
     }
 
     return(
