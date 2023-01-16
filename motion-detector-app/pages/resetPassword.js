@@ -46,8 +46,10 @@ export default function Login(){
             <div className="card-body">
                 <div className="d-flex flex-column justify-content-center align-items-center">
                     <h4  className='text-white fw-bold mb-4'> Reset Password </h4>
-                    <h5  className='text-white fw-bold'> Email </h5>
+                    <h5  className='text-white fw-bold'> Account Email </h5>
                     <span> <p className='text-white'> Email@abc.com </p></span>
+                    <h5  className='text-white fw-bold'> Account Username </h5>
+                    <span> <p className='text-white'> Username123 </p></span>
                     <section className={`${styles.formContainer}`}>
                         <form className="d-flex flex-column" onSubmit={formik.handleSubmit}>
                             <div className='d-flex flex-column gap-1'>
