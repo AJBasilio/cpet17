@@ -76,19 +76,6 @@ app.post('/register', (req, res) => {
 app.post('/login-user', (req, res) => {
     
     const {email, password} = req.body;
-   // check the provided email and password against the data in the database
-//    const user = connection.query("SELECT * FROM motion_users WHERE email = ?", [email]);
-//    console.log(user.password)
-   
-//    if (user.length) {
-//        const match = await bcrypt.compare(password, user.password);
-//        if (match) {
-//            return res.json({ message: 'Success', username : user.username, email: user.email });
-//        } else {
-//            return res.json({ message: 'Failed1' });
-//        }
-//    }
-//    return res.json({ message: 'Failed2' });  
 
    connection.query("SELECT * FROM motion_users WHERE email = ?", [email], async (err, user) => {
         
@@ -109,6 +96,36 @@ app.post('/login-user', (req, res) => {
     }
          
     });
+})
+
+app.post('/change-pass', (req, res) => {
+    const {ses_email, opassword, npassword} = req.body;
+    
+    connection.query("SELECT * FROM motion_users WHERE email = ?", [ses_email], async (err, user) => {
+        console.log(user)
+        if (err) throw err;
+    
+        try {
+            if (user) {
+                const match = await bcrypt.compare(opassword, user[0].password);
+                if (match) {
+                    bcrypt.hash(npassword, saltRounds, function(err, result) {
+                        if (err) throw err;
+
+                        connection.query("UPDATE motion_users SET password = ? WHERE email = ?", [result, ses_email])
+                        console.log("Success change pass.")
+                    })
+                    
+                } else {
+                    return res.json({ message: 'Old password does not match' });
+                }
+            }
+            return res.json({ message: 'Invalid email or password.' });
+        } catch (err) {
+            res.json({message: err})
+        }
+             
+        });   
 })
 
 app.listen(port, () => {

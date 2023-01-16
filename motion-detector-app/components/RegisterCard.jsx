@@ -5,13 +5,22 @@ import { useState } from 'react';
 import {useFormik} from 'formik';
 import {registerValidate} from "../lib/validate";
 import { useRouter } from "next/router";
-
+import toast from "../components/Toast";
+import * as React from "react";
 
 const RegisterCard = () => {
 
     const router = useRouter()
     const[show, setShow] = useState(false)
     const[cshow, setcShow] = useState(false)
+
+    const notify = React.useCallback((type, message) => {
+        toast({ type, message });
+      }, []);
+
+    const dismiss = React.useCallback(() => {
+    toast.dismiss();
+    }, []);
 
     // Register Formik
     const formik = useFormik({
@@ -42,7 +51,10 @@ const RegisterCard = () => {
         .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
-            if (data) router.push('/login')
+            if (data) {
+                router.push('/login')
+                notify("success", "Successfully Registered.")
+            }
         })
         .catch((error) => {
             console.error('Error:', error);

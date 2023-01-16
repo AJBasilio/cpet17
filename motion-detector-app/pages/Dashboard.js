@@ -15,6 +15,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 
 function Dashboard( {users} ) {
   const {data:session} = useSession()
+  console.log(session)
 
   const data = useMemo(()=>
     [

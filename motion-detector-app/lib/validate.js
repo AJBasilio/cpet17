@@ -55,3 +55,33 @@ export function registerValidate(values) {
 
     return errors;
 }
+
+export function settingsValidate(values) {
+    const errors = {};
+
+    // Password Validate
+    if (!values.opassword) {
+        errors.opassword = 'Required.'
+    } else if (values.opassword.length < 8) {
+        errors.opassword = 'Password must be greater than 8 characters long.';
+    } else if (values.opassword.includes(" ")) {
+        errors.opassword = "Invalid Password";
+    }
+
+    if (!values.npassword) {
+        errors.npassword = 'Required.'
+    } else if (values.npassword.length < 8) {
+        errors.npassword = 'Password must be greater than 8 characters long.';
+    } else if (values.npassword.includes(" ")) {
+        errors.npassword = "Invalid Password";
+    }
+
+    // CPassword Validate
+    if (!values.cnpassword) {
+        errors.cnpassword = 'Required.'
+    } else if (values.npassword !== values.cnpassword) {
+        errors.cnpassword = 'Password does not match.';
+    }
+
+    return errors;
+}

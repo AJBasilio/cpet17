@@ -54,6 +54,7 @@ export default function Login(){
         })
         if (status.ok) {
             router.push(status.url)
+            notify("success", "Successfully Logged In.")
         } else {
             notify("error", "Invalid Credentials.")
         }        

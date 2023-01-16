@@ -8,25 +8,62 @@ import { useState} from 'react';
 import {getSession, useSession, signOut } from 'next-auth/react';
 import {useFormik} from 'formik';
 import {settingsValidate} from "../lib/validate";
+import { useRouter } from "next/router";
+import toast from "../components/Toast";
+import * as React from "react";
 
 export default function settings(){
 
+    const router = useRouter()
     const[show, setShow] = useState(false)
     const[nshow, setnShow] = useState(false)
     const {data:session} = useSession()
 
+    const notify = React.useCallback((type, message) => {
+        toast({ type, message });
+      }, []);
+
+    const dismiss = React.useCallback(() => {
+    toast.dismiss();
+    }, []);
+
     // Settings Formik
     const formik = useFormik({
         initialValues: {
-            password: '',
-            npassword: ''
+            opassword: '',
+            npassword: '',
+            cnpassword: ''
         },
         validate: settingsValidate,
         onSubmit
     });
 
     async function onSubmit(values) {
-        console.log(values)
+        const opassword = values.opassword
+        const npassword = values.npassword
+        const ses_email = session.user.email
+        console.log(ses_email)
+
+        const data = { ses_email, opassword, npassword }
+
+        await fetch('http://localhost:4000/change-pass', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            if (data) {
+                router.push('/Dashboard')
+                notify("success", "Password Change.")
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
     }
 
     return(
@@ -55,6 +92,7 @@ export default function settings(){
                 <div className="d-flex flex-column justify-content-center align-items-center">
                     <h4  className='text-white fw-bold'>  </h4>
                     <section className={`${styles.formContainer}`}>
+
                     <form className="d-flex flex-column " onSubmit={formik.handleSubmit}>
                         <div className="text-white d-block">
                             <span className='d-block text-center mb-3'>
@@ -81,12 +119,12 @@ export default function settings(){
                                 type={`${show ?"text":"password"}`}
                                 name="password"
                                 placeholder="Old Password"
-                                {...formik.getFieldProps('password')}
+                                {...formik.getFieldProps('opassword')}
                                 />
                                 <span className={styles.passwordLogo} onClick={()=> setShow(!show)}>
                                     <img src="/logo/Surveillhanz.png" width={25} height={25} />
                                 </span>
-                                {formik.errors.password && formik.touched.password ? <span className={styles.guide}>{formik.errors.password}</span> : <></>}
+                                {formik.errors.opassword && formik.touched.opassword ? <span className={styles.guide}>{formik.errors.opassword}</span> : <></>}
                             </div>
                             <div className="input-group d-flex flex-column justify-content-center">
                                 <input className={styles.formControl}
@@ -99,6 +137,18 @@ export default function settings(){
                                     <img src="/logo/Surveillhanz.png" width={25} height={25} />
                                 </span>
                                 {formik.errors.npassword && formik.touched.npassword ? <span className={styles.guide}>{formik.errors.npassword}</span> : <></>}
+                            </div>
+                            <div className="input-group d-flex flex-column justify-content-center">
+                                <input className={styles.formControl}
+                                type={`${nshow ?"text":"password"}`}
+                                name="npassword"
+                                placeholder="Confirm New Password"
+                                {...formik.getFieldProps('cnpassword')}
+                                />
+                                <span className={styles.passwordLogo} onClick={()=> setnShow(!nshow)}>
+                                    <img src="/logo/Surveillhanz.png" width={25} height={25} />
+                                </span>
+                                {formik.errors.cnpassword && formik.touched.cnpassword ? <span className={styles.guide}>{formik.errors.cnpassword}</span> : <></>}
                             </div>
                             <div className="input-button">
                                 <button type="submit" className={styles.formControlButton}>
