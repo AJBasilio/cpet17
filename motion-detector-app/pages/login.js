@@ -35,7 +35,11 @@ export default function Login(){
     });
 
     async function onSubmit(values) {
-        console.log(values)
+        const status = await signIn('credentials', {
+            email: values.email,
+            password: values.password,
+            callbackUrl: "http://localhost:3000/Dashboard"
+        })
     }
 
     return(

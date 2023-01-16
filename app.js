@@ -55,7 +55,7 @@ app.post('/camera', (req, res) => {
 
 app.post('/register', (req, res) => {
     const {username, email, password} = req.body;
-
+    
     bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(password, salt, function(err, hash) {
             // Store hash in your password DB.
@@ -70,9 +70,45 @@ app.post('/register', (req, res) => {
                 }
               );
         });
-    });
+    });    
+})
 
+app.post('/login-user', (req, res) => {
     
+    const {email, password} = req.body;
+   // check the provided email and password against the data in the database
+//    const user = connection.query("SELECT * FROM motion_users WHERE email = ?", [email]);
+//    console.log(user.password)
+   
+//    if (user.length) {
+//        const match = await bcrypt.compare(password, user.password);
+//        if (match) {
+//            return res.json({ message: 'Success', username : user.username, email: user.email });
+//        } else {
+//            return res.json({ message: 'Failed1' });
+//        }
+//    }
+//    return res.json({ message: 'Failed2' });  
+
+   connection.query("SELECT * FROM motion_users WHERE email = ?", [email], async (err, user) => {
+        
+    if (err) throw err;
+
+    try {
+        if (user) {
+            const match = await bcrypt.compare(password, user[0].password);
+            if (match) {
+                return res.json({ username : user[0].username, email: user[0].email, message: 'Success' });
+            } else {
+                return res.json({ message: 'Invalid email or password.' });
+            }
+        }
+        return res.json({ message: 'Invalid email or password.' });
+    } catch (err) {
+        res.json({message: err})
+    }
+         
+    });
 })
 
 app.listen(port, () => {
