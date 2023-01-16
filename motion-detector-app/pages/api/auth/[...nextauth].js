@@ -37,13 +37,13 @@ export default NextAuth({
                 console.log(json.message)
                 
                 if (json.message === "Success") {
-                    console.log({name, email});
                     return {name, email_json};
                 } else {
-                    throw new Error(json.message);
+                    throw new Error("Invalid Credentials");
                 }
                 
             }
         })
-    ]
+    ],
+    secret: "pbi/NysMg4ZHtQ3SCCvunzU1WfBM5ZYOJMwJFJiZHpI="
 });

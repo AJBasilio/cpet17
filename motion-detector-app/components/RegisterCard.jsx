@@ -31,7 +31,8 @@ const RegisterCard = () => {
         const password = values.password
 
         const data = { username, email, password };
-        fetch('http://localhost:4000/register', {
+
+        await fetch('http://localhost:4000/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -41,7 +42,7 @@ const RegisterCard = () => {
         .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
-            router.push('/login')
+            if (data) router.push('/login')
         })
         .catch((error) => {
             console.error('Error:', error);
