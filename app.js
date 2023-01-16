@@ -17,7 +17,7 @@ app.use(express.urlencoded({ limit: '2mb', extended: false }));
 const connection = mysql.createConnection({
     host : "localhost",
     user : "root",
-    password : "password12345",
+    password : "lunafamily123",
     database : "opencv_db"
 });
 

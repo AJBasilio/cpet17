@@ -140,7 +140,7 @@ const RegisterCard = () => {
                                     </div>
                                 </div>
                                 <input className={styles.formControl}
-                                type="password"
+                                type={`${cshow ?"text":"password"}`}
                                 name="cpassword"
                                 placeholder="Confirm Password"
                                 />

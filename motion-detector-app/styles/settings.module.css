@@ -71,13 +71,13 @@
 
 .formControl {
     display: block;
-    width: 320px !important;
+    width: auto !important;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
     color: #212529;
-    background-color: #1c1c1c;
+    background-color: #242424;
     background-clip: padding-box;
     border: 1px solid #ced4da;
     -webkit-appearance: none;
@@ -91,7 +91,8 @@
 
 .formControlButton{
     display: block;
-    width: 320px !important;
+    width: 100% !important;
+    min-width: 320px;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: bold;
@@ -135,7 +136,7 @@
     border: none;
     position: absolute;
     right:0px;
-    top:5px;
+    top:32px;
     z-index: 99;
     height: 30px;
     cursor: pointer;
@@ -209,18 +210,37 @@
 
 
 .guide{
-    text-align: center;
+    text-align: end;
     color:#FFC107;
     animation-name:animateGuide;
     animation-duration:1s;
     animation-fill-mode: forwards;
-    margin-top:1px;
-    font-size: 12px;
-    position:absolute;
+    font-size: 11px;
     z-index: 1020;
-    bottom:-17px;
     width: auto;
     transition: 300ms ease-in-out;
+    display:flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom:5px;
 }
+
+.inputLabel{
+    color:#e6e6e6;
+    font-weight: bold;
+    margin-bottom:5px;
+}
+
+@keyframes animateGuide {
+    0%{
+        transform: translate3d(70px,0,0); opacity:0.25;
+    }
+    100%{
+        transform: translate3d(0,0,0); opacity:1;
+    }
+}
+
+
+
 
 

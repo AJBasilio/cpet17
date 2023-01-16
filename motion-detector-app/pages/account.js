@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useState} from 'react';
 import {getSession, useSession, signOut } from 'next-auth/react';
 import {useFormik} from 'formik';
-import {settingsValidate} from "../lib/validate";
+import settingsValidate from "../lib/validate";
 import { useRouter } from "next/router";
 import toast from "../components/Toast";
 import * as React from "react";
@@ -17,6 +17,7 @@ export default function settings(){
     const router = useRouter()
     const[show, setShow] = useState(false)
     const[nshow, setnShow] = useState(false)
+    const[cnshow, setcnShow] = useState(false)
     const {data:session} = useSession()
 
     const notify = React.useCallback((type, message) => {
@@ -31,8 +32,7 @@ export default function settings(){
     const formik = useFormik({
         initialValues: {
             opassword: '',
-            npassword: '',
-            cnpassword: ''
+            npassword: ''
         },
         validate: settingsValidate,
         onSubmit
@@ -110,23 +110,40 @@ export default function settings(){
                         </div>
                     
                         <hr className="text-white"/>
-                        <h5 className='fw-bold text-center text-white'>
-                                    Change Password
+                         <span className='d-block text-center text-white justify-content-center align-items-center mx-4'>
+                                <h5 className=' fw-bold '>
+                                    Change Password 
                                 </h5>
+                                <span><p style={{fontSize:'14px', textAlign:'center'}}>Unfortunately, accounts from <span className='text-warning fw-bold'>Google</span> or 
+                                <span className='text-warning fw-bold'> Github</span><br/> can't change their password</p></span>
+                        </span>
                         <div className='d-flex flex-column gap-3'>
-                            <div className="input-group mt-4 d-flex flex-column justify-content-center">
+                            <div className="input-group d-flex flex-column justify-content-center">
+                                <div className='gap-2 d-flex flex-row justify-content-between'>
+                                    <div className={styles.inputLabel}>
+                                        Password
+                                    </div>
+                                    {formik.errors.password && formik.touched.password ? 
+                                    <span className={styles.guide}>{formik.errors.password}</span> : <></>}
+                                </div>
                                 <input className={styles.formControl}
                                 type={`${show ?"text":"password"}`}
                                 name="password"
-                                placeholder="Old Password"
-                                {...formik.getFieldProps('opassword')}
+                                placeholder="Password"
+                                {...formik.getFieldProps('password')}
                                 />
                                 <span className={styles.passwordLogo} onClick={()=> setShow(!show)}>
-                                    <img src="/logo/Surveillhanz.png" width={25} height={25} />
+                                <img src="/logo/Surveillhanz.png" width={25} height={25} />
                                 </span>
-                                {formik.errors.opassword && formik.touched.opassword ? <span className={styles.guide}>{formik.errors.opassword}</span> : <></>}
                             </div>
                             <div className="input-group d-flex flex-column justify-content-center">
+                                <div className='gap-2 d-flex flex-row justify-content-between'>
+                                    <div className={styles.inputLabel}>
+                                        New Password
+                                    </div>
+                                    {formik.errors.password && formik.touched.npassword ? 
+                                    <span className={styles.guide}>{formik.errors.password}</span> : <></>}
+                                </div>
                                 <input className={styles.formControl}
                                 type={`${nshow ?"text":"password"}`}
                                 name="npassword"
@@ -134,21 +151,23 @@ export default function settings(){
                                 {...formik.getFieldProps('npassword')}
                                 />
                                 <span className={styles.passwordLogo} onClick={()=> setnShow(!nshow)}>
-                                    <img src="/logo/Surveillhanz.png" width={25} height={25} />
+                                <img src="/logo/Surveillhanz.png" width={25} height={25} />
                                 </span>
-                                {formik.errors.npassword && formik.touched.npassword ? <span className={styles.guide}>{formik.errors.npassword}</span> : <></>}
                             </div>
                             <div className="input-group d-flex flex-column justify-content-center">
+                                <div className='gap-2 d-flex flex-row justify-content-between'>
+                                    <div className={styles.inputLabel}>
+                                        Confirm New Password
+                                    </div>
+                                </div>
                                 <input className={styles.formControl}
-                                type={`${nshow ?"text":"password"}`}
-                                name="npassword"
+                                type={`${cnshow ?"text":"password"}`}
+                                name="cnpassword"
                                 placeholder="Confirm New Password"
-                                {...formik.getFieldProps('cnpassword')}
                                 />
-                                <span className={styles.passwordLogo} onClick={()=> setnShow(!nshow)}>
-                                    <img src="/logo/Surveillhanz.png" width={25} height={25} />
+                                <span className={styles.passwordLogo} onClick={()=> setcnShow(!cnshow)}>
+                                <img src="/logo/Surveillhanz.png" width={25} height={25} />
                                 </span>
-                                {formik.errors.cnpassword && formik.touched.cnpassword ? <span className={styles.guide}>{formik.errors.cnpassword}</span> : <></>}
                             </div>
                             <div className="input-button">
                                 <button type="submit" className={styles.formControlButton}>

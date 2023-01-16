@@ -77,7 +77,7 @@
     font-weight: 400;
     line-height: 1.5;
     color: white;
-    background-color: #1c1c1c;
+    background-color: #242424;
     background-clip: padding-box;
     border: 1px solid #ced4da;
     -webkit-appearance: none;
@@ -243,10 +243,10 @@
 
 @keyframes animateGuide {
     0%{
-        transform: scale(0.4);
+        transform: translate3d(70px,0,0); opacity:0.25;
     }
     100%{
-        transform: scale(1);
+        transform: translate3d(0,0,0); opacity:1;
     }
 }
 

@@ -4,9 +4,10 @@
   background-color: #1c1c1c;
   justify-content:space-evenly;
   align-items: center;
-  padding: 0% 5%;
+  padding: 0% 5% 0% 5%;
   gap:1%;
   opacity:0;
+  
 }
 
 .animateContainer{
@@ -25,6 +26,91 @@
   }
   
 }
+
+.typewriter{
+  text-align: center;
+  overflow: hidden;
+  border-right: .15em solid #e6e6e6; 
+  white-space: nowrap; 
+  margin: 0 auto; 
+  letter-spacing: .15em; 
+  color:#e6e6e6;
+  opacity: 0;
+  animation: 
+    typing 1.5s steps(40, end),
+    blink-caret 1.5s steps(4, end);
+  animation-delay:0s;
+  animation-fill-mode: forwards;
+  
+  
+}
+
+.typewriter2{
+  overflow: hidden;
+  border-right: .15em solid #e6e6e6; 
+  white-space: nowrap; 
+  margin: 0 auto; 
+  letter-spacing: .15em; 
+  color:#e6e6e6;
+  opacity: 0;
+  animation: 
+    typing2 1.5s steps(40, end),
+    blink-caret2 1.5s steps(4, end);
+  animation-delay: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+.typewriter3{
+  overflow: hidden;
+  border-right: .15em solid #e6e6e6; 
+  white-space: nowrap; 
+  margin: 0 auto; 
+  letter-spacing: .15em; 
+  color:#e6e6e6;
+  opacity: 0;
+  animation: 
+    typing3 1.5s steps(40, end),
+    blink-caret3 1.5s steps(4, end);
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0; opacity: 0.75; }
+  to { width: 100%;opacity: 1; }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent}
+  50% { border-color: #e6e6e6; }
+}
+
+/* The typing effect */
+@keyframes typing2 {
+  from { width: 0; opacity: 0.75; }
+  to { width: 100%; opacity: 1; }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret2 {
+  from, to { border-color: transparent}
+  50% { border-color: #e6e6e6; }
+}
+
+/* The typing effect */
+@keyframes typing3 {
+  from { width: 0; opacity: 0.75; }
+  to { width: 100%; opacity: 1; }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret3 {
+  from, to { border-color: transparent}
+  50% { border-color: #e6e6e6; }
+}
+
 
 
 .ContactsDiv{

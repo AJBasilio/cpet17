@@ -12,6 +12,11 @@ const AboutUsLinks = () => {
   const { ref: idPictureRef5, inView: idPictureVisible5} = useInView();
   return (
     <div ref={containerRef} className={`${styles.container} ${containerVisible ? styles.animateContainer : ''}` }>
+      <div ref={contactsDivRef}>
+        <h1 className={`${contactsDivVisible ? styles.typewriter : ''}` }><span>MEET</span></h1>
+        <h1 className={`${contactsDivVisible ? styles.typewriter2 : ''}` }><span style={{letterSpacing:'15px',marginLeft:'7px'}}>THE</span></h1>
+        <h1 className={`${contactsDivVisible ? styles.typewriter3 : ''}` }><span style={{marginLeft:'7px'}}>TEAM</span></h1>
+      </div>
       <div ref={contactsDivRef} className={`${styles.ContactsDiv} ${contactsDivVisible ? styles.animateContactsDiv : ''}` }>
         <div className={styles.contacts}>
           <h5>Dominick Hanz Joson</h5>
