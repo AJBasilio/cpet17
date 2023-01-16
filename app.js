@@ -1,9 +1,12 @@
 const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
+const bcrypt = require('bcrypt');
 
 const app = express();
 const port = 4000;
+
+const saltRounds = 10;
 
 app.use(cors());
 
@@ -51,18 +54,25 @@ app.post('/camera', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
-    const {username, email, password, cpassword} = req.body;
+    const {username, email, password} = req.body;
 
-    connection.query(
-        'INSERT INTO motion_users (username, email, password, cpassword) VALUES (?,?,?,?)',
-        [username, email, password, cpassword],
-        (err, results) => {
-          if (err) {
-            return res.status(500).json({ error: err.message });
-          }
-          res.json({ message: 'Data inserted successfully' });
-        }
-      );
+    bcrypt.genSalt(saltRounds, function(err, salt) {
+        bcrypt.hash(password, salt, function(err, hash) {
+            // Store hash in your password DB.
+            connection.query(
+                'INSERT INTO motion_users (username, email, password) VALUES (?,?,?)',
+                [username, email, hash],
+                (err, results) => {
+                  if (err) {
+                    return res.status(500).json({ error: err.message });
+                  }
+                  res.json({ message: 'Data inserted successfully' });
+                }
+              );
+        });
+    });
+
+    
 })
 
 app.listen(port, () => {

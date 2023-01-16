@@ -4,10 +4,12 @@ import styles from "../styles/Register.module.css";
 import { useState } from 'react';
 import {useFormik} from 'formik';
 import {registerValidate} from "../lib/validate";
+import { useRouter } from "next/router";
 
 
 const RegisterCard = () => {
 
+    const router = useRouter()
     const[show, setShow] = useState(false)
     const[cshow, setcShow] = useState(false)
 
@@ -24,7 +26,27 @@ const RegisterCard = () => {
     });
 
     async function onSubmit(values) {
-        console.log(values)
+        const username = values.username
+        const email = values.email
+        const password = values.password
+
+        const data = { username, email, password };
+        fetch('http://localhost:4000/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            router.push('/login')
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
     }
 
     return (
