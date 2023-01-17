@@ -55,21 +55,30 @@ app.post('/camera', (req, res) => {
 
 app.post('/register', (req, res) => {
     const {username, email, password} = req.body;
-    console.log(email)
     
     bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(password, salt, function(err, hash) {
-            // Store hash in your password DB.
-            connection.query(
-                'INSERT INTO motion_users (username, email, password) VALUES (?,?,?)',
-                [username, email, hash],
-                (err, results) => {
-                  if (err) {
-                    return res.status(500).json({ error: err.message });
-                  }
-                  res.json({ message: 'Data inserted successfully' });
+            connection.query('SELECT COUNT(*) AS cnt FROM motion_users WHERE email = ?', [email], (err, data) => {
+
+                if (err) throw err;
+
+                if (data[0].cnt > 0) {
+                    return res.json({message: "Email already exists."})
+                } else {
+                    connection.query(
+                        'INSERT INTO motion_users (username, email, password) VALUES (?,?,?)',
+                        [username, email, hash],
+                        (err, results) => {
+                          if (err) {
+                            return res.status(500).json({ error: err.message });
+                          }
+                          res.json({ message: 'Data inserted successfully' });
+                        }
+                      );
                 }
-              );
+            })
+            // Store hash in your password DB.
+            
         });
     });    
 })

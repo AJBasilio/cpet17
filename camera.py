@@ -77,8 +77,8 @@ while True:
 		image_data = base64.b64encode(encoded)
 		image_decoded = image_data.decode('utf-8')
 
-		with open('readme.txt', 'w') as file:
-			file.write(str(image_decoded))
+		# with open('readme.txt', 'w') as file:
+		# 	file.write(str(image_decoded))
 
 		img_name = f'img_{datetime.now().strftime("%m%d%Y-%H%M%S")}.png'
 		cv2.imwrite(os.path.join('./img_captured', img_name), frame)
