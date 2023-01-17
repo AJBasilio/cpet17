@@ -82,26 +82,6 @@ function Dashboard( {users} ) {
         <div className={styles.container}>
           <div className={styles.containerText}>
             <h1>Motion Detected Data</h1>
-              <form className="d-flex flex-column">
-                <div className='d-flex flex-column gap-1'>
-                    <div className="input-group mt-4 d-flex flex-column justify-content-center">
-                        <div className='gap-2 d-flex flex-row justify-content-center'>
-                            <div className={styles.inputLabel}>
-                            Filter By Date
-                            </div>
-                        </div>
-                        <input style={{color:'white'}} className={styles.formControl}
-                        type="date" 
-                        name="dateTime"
-                        placeholder="Search Date"/>
-                    </div>
-                    <div className="input-button">
-                        <button type="submit" className={styles.formControlButton}>
-                            Search
-                        </button>
-                    </div>
-                </div>
-              </form>
           </div>
             <div className="row">
             {users.map(user => (
