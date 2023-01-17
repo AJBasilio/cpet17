@@ -17,7 +17,7 @@ app.use(express.urlencoded({ limit: '2mb', extended: false }));
 const connection = mysql.createConnection({
     host : "localhost",
     user : "root",
-    password : "lunafamily123",
+    password : "password12345",
     database : "opencv_db"
 });
 
@@ -55,6 +55,7 @@ app.post('/camera', (req, res) => {
 
 app.post('/register', (req, res) => {
     const {username, email, password} = req.body;
+    console.log(email)
     
     bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(password, salt, function(err, hash) {

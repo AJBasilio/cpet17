@@ -28,6 +28,7 @@ const RegisterCard = () => {
             username: '',
             email: '',
             password: '',
+            cpassword: ''
         },
         validate: registerValidate,
         onSubmit
@@ -138,11 +139,14 @@ const RegisterCard = () => {
                                     <div className={styles.inputLabel}>
                                         Confirm Password
                                     </div>
+                                    {formik.errors.cpassword && formik.touched.cpassword ? 
+                                    <span className={styles.guide}>{formik.errors.cpassword}</span> : <></>}
                                 </div>
                                 <input className={styles.formControl}
                                 type={`${cshow ?"text":"password"}`}
                                 name="cpassword"
                                 placeholder="Confirm Password"
+                                {...formik.getFieldProps('cpassword')}
                                 />
                                 <span className={styles.passwordLogo} onClick={()=> setcShow(!cshow)}>
                                     <img src="/logo/Surveillhanz.png" width={25} height={25} />
