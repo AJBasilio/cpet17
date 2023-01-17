@@ -15,7 +15,7 @@ import {useInView} from 'react-intersection-observer';
 function Dashboard( {users} ) {
   const {data:session} = useSession()
   console.log(session)
-
+  
   const image_head = 'data:image/jpeg;base64,';
   // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   if (session) {
@@ -82,14 +82,35 @@ function Dashboard( {users} ) {
         <div className={styles.container}>
           <div className={styles.containerText}>
             <h1>Motion Detected Data</h1>
+              <form className="d-flex flex-column">
+                <div className='d-flex flex-column gap-1'>
+                    <div className="input-group mt-4 d-flex flex-column justify-content-center">
+                        <div className='gap-2 d-flex flex-row justify-content-center'>
+                            <div className={styles.inputLabel}>
+                            Filter By Date
+                            </div>
+                        </div>
+                        <input style={{color:'white'}} className={styles.formControl}
+                        type="date" 
+                        name="dateTime"
+                        placeholder="Search Date"/>
+                    </div>
+                    <div className="input-button">
+                        <button type="submit" className={styles.formControlButton}>
+                            Search
+                        </button>
+                    </div>
+                </div>
+              </form>
           </div>
-            
+            <div className="row">
             {users.map(user => (
-                <div  key={user.id} >
+                <div className="col-xl-4 col-md-6 justify-content-center d-flex align-items-center flex-column py-4" key={user.id} >
                     <h5 className={styles.dateText}>Date Detected: { user.date_time }</h5>
-                    <img className={styles.image} src={image_head + Buffer.from(user.captured_image).toString('utf-8')} height={400} width={500}></img>
+                    <img className={styles.image} src={image_head + Buffer.from(user.captured_image).toString('utf-8')} height={250} width={350}></img>
                 </div>
             ))}
+            </div>
         </div>
 
         <Footer/>
