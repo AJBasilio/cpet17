@@ -3,14 +3,28 @@ import 'bootstrap/dist/css/bootstrap.css';
 import styles from "../styles/Login.module.css";
 import Link from "next/link";
 import {useFormik} from 'formik';
-import forgotPassword from '../lib/validate';
+import {forgotPassword} from '../lib/validate';
 import * as React from "react";
 import { useState } from 'react';
+import { useRouter } from 'next/router';
+import toast from "../components/Toast";
 
 export default function Login(){
 
     const[show, setShow] = useState(false)
     const[cshow, setcShow] = useState(false)
+
+    const router = useRouter()
+    const name = router.query.name
+    const email_query = router.query.email
+
+    const notify = React.useCallback((type, message) => {
+        toast({ type, message });
+      }, []);
+
+    const dismiss = React.useCallback(() => {
+    toast.dismiss();
+    }, []);
 
     // Forgot Password Formik
     const formik = useFormik({
@@ -19,7 +33,34 @@ export default function Login(){
             cpassword: '',
         },
         validate: forgotPassword,
+        onSubmit
     });
+
+    async function onSubmit(values) {
+
+        const password = values.password
+        const email = email_query
+
+        const data = { email, password };
+
+        await fetch('http://localhost:4000/submit-pass', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data) {
+                router.push('/login');
+                notify("success", "Password Change.");
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
 
     return(
     <div>
@@ -47,9 +88,11 @@ export default function Login(){
                 <div className="d-flex flex-column justify-content-center align-items-center">
                     <h4  className='text-white fw-bold mb-4'> Reset Password </h4>
                     <h5  className='text-white fw-bold'> Account Email </h5>
-                    <span> <p className='text-white'> Email@abc.com </p></span>
+                    <span> <p className='text-white'> {email_query} </p></span>
+
                     <h5  className='text-white fw-bold'> Account Username </h5>
-                    <span> <p className='text-white'> Username123 </p></span>
+                    <span> <p className='text-white'> {name} </p></span>
+
                     <section className={`${styles.formContainer}`}>
                         <form className="d-flex flex-column" onSubmit={formik.handleSubmit}>
                             <div className='d-flex flex-column gap-1'>
@@ -76,11 +119,14 @@ export default function Login(){
                                         <div className={styles.inputLabel}>
                                             Confirm Password
                                         </div>
+                                        {formik.errors.cpassword && formik.touched.cpassword ? 
+                                        <span className={styles.guide}>{formik.errors.cpassword}</span> : <></>}
                                     </div>
                                     <input className={styles.formControl}
                                     type={`${cshow ?"text":"password"}`}
                                     name="cpassword"
                                     placeholder="Confirm Password"
+                                    {...formik.getFieldProps('cpassword')}
                                     />
                                     <span className={styles.passwordLogo} onClick={()=> setcShow(!cshow)}>
                                         <img src="/logo/Surveillhanz.png" width={25} height={25} />
@@ -88,7 +134,7 @@ export default function Login(){
                                 </div>
                                 <div className="input-button">
                                     <button type="submit" className={styles.formControlButton}>
-                                        Confirm 
+                                        Set New Password
                                     </button>
                                 </div>
                             </div>

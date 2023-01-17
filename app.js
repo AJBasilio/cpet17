@@ -17,7 +17,7 @@ app.use(express.urlencoded({ limit: '2mb', extended: false }));
 const connection = mysql.createConnection({
     host : "localhost",
     user : "root",
-    password : "lunafamily123",
+    password : "password12345",
     database : "opencv_db"
 });
 
@@ -126,6 +126,42 @@ app.post('/change-pass', (req, res) => {
         }
              
         });   
+})
+
+
+app.post('/forgot-pass', (req, res) => {
+    
+    const {email} = req.body;
+
+   connection.query("SELECT * FROM motion_users WHERE email = ?", [email], async (err, user) => {
+        
+    if (err) throw err;
+
+    try {
+        if (user) {
+            return res.json({ username : user[0].username, email: user[0].email, message: 'Success' });
+        }
+        return res.json({ message: 'Email does not exist.' });
+    } catch (err) {
+        res.json({ message: 'Email does not exist.' })
+    }
+         
+    });
+})
+
+app.post('/submit-pass', (req, res) => {
+    
+    const { email, password } = req.body;
+
+    bcrypt.hash(password, saltRounds, function(err, result) {
+        if (err) throw err;
+
+        connection.query("UPDATE motion_users SET password = ? WHERE email = ?", [result, email], (err, user) => {
+            console.log("Success set new pass.")
+            return res.json({message : 'New Password Change.'})   
+        })
+    })
+
 })
 
 app.listen(port, () => {
