@@ -86,7 +86,7 @@ function Dashboard( {users} ) {
             
             {users.map(user => (
                 <div  key={user.id} >
-                    <h5 className="text-white text-center py-2 fw-bold">Date Detected: <span className="text-white"> { user.date_time }</span></h5>
+                    <h5 className={styles.dateText}>Date Detected: { user.date_time }</h5>
                     <img className={styles.image} src={image_head + Buffer.from(user.captured_image).toString('utf-8')} height={400} width={500}></img>
                 </div>
             ))}
