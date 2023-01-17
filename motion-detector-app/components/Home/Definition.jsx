@@ -9,14 +9,13 @@ const Definition = () => {
     <div className={styles.container}>
       <div ref={shapeRef} className={`${styles.Shape} ${shapeVisible ? styles.animateShape : ''}` }>
         <div className={styles.Question}>
-            <h1>What is Object Recognition?</h1>
+            <h1>What is Motion Detection?</h1>
         </div>
         <div className={styles.Answer}>
           <p>
-            The term &quot;object recognition&quot; refers to techniques for physically recognizing 
-            known things using optical, auditory, or other physical means inside an object
-              space. For instance, an object&apos;s presence in a digital image or video stream, 
-              as well as its position and location, are identified.
+          <span className="text-warning">Motion detection</span> is the process of detecting a change in the position of an 
+          object relative to its surroundings or a change in the surroundings relative
+           to an object. It can be achieved by either mechanical or electronic methods
           </p>
         </div>
       </div>

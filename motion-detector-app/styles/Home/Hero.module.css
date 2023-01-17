@@ -38,6 +38,15 @@
   display: flex;
 }
 
+.containerImage>img{
+  border:3px inset white;
+  border-radius: 40px;
+  position: relative; 
+  -webkit-box-shadow: inset 0 0 10px 10px #000;    
+    -moz-box-shadow: inset 0 0 10px 10px #000;
+    box-shadow: inset 0 0 10px 10px #000;
+}
+
 .containerImage>img:hover{
   transform: scale(1.05);
   transition:0.5s;
@@ -46,7 +55,7 @@
 
 .containerText > h1 {
   font-weight: 700;
-  font-size: 65px;
+  font-size: 70px;
   line-height: 74px;
   display: flex;
   align-items: flex-start;
@@ -54,7 +63,8 @@
   width: 607px;
   height: 110px;
   margin: 0px;
-  
+  text-align: center;
+  justify-content: center;
   
 }
 

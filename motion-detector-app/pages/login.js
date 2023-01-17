@@ -126,7 +126,7 @@ export default function Login(){
                             </div>
                             <div>
                                 <span className='justify-content-end d-flex my-2'>
-                                    <Link href='/forgotpassword' className={styles.forgotPassword}>
+                                    <Link href='/forgotPassword' className={styles.forgotPassword}>
                                         Forgot Password?
                                     </Link>
                                 </span>

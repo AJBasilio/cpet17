@@ -16,6 +16,10 @@
   border-radius: 75px;
   padding:50px;
   opacity:0;
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .animateShape{

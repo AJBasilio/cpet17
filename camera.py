@@ -18,7 +18,7 @@ img_counter = 0
 # df = pandas.DataFrame(columns = ["Start", "End"])
 
 # Capturing video
-video = cv2.VideoCapture(1)
+video = cv2.VideoCapture(0)
 
 # Infinite while loop to treat stack of image as video
 while True:

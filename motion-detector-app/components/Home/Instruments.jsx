@@ -13,9 +13,6 @@ const Instruments = () => {
       <div ref={shapeRef} className={`${styles.shape} ${shapeVisible ? styles.animateShape : ''}` }>
         <div ref={imagesRef} className={`${styles.firstRow} ${imagesVisible ? styles.animateImages : ''}` }>
           <div>
-              <Link href="https://www.tensorflow.org" target="_blank"><img src="images/TensorFlowImage.png" alt="TensorFlowLogo" /></Link>
-          </div>
-          <div>
               <Link href="https://www.python.org" target="_blank"><img src="images/PythonImage.png" alt="PythonLogo" /></Link>
           </div>
         </div>
@@ -30,7 +27,7 @@ const Instruments = () => {
 
       </div>
       <div ref={titleRef} className={`${styles.Title} ${titleVisible ? styles.animateTitle : ''}` }>
-        <h1> Software used on this project</h1>
+        <h1> Softwares used on this project</h1>
       </div>
     </div>
   );
