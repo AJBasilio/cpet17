@@ -338,7 +338,27 @@
 
 
 /* image stylings */
+.dateText{
+  color:white;
+  text-align:center; 
+  padding: 20px 0px 10px 0px;
+  font-weight: bold;
+}
+
 .image{
   border-radius:20px;
-  border:2px white solid;
+  box-shadow: 2px 2px 0 #E6E6E6,
+		-2px -2px 0 #E6E6E6,
+		-2px 2px 0 #E6E6E6,
+		2px -2px 0 #E6E6E6;
+	transition: 300ms ease-in-out;
+}
+
+.image:hover{
+  box-shadow: 0px -55px rgba(154, 153, 153, 0.364);
+}
+
+.image:hover + .dateText{
+  color:black !important;
+  z-index: 9999;
 }
