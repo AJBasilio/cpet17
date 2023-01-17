@@ -51,7 +51,9 @@ const RegisterCard = () => {
         .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
-            if (data) {
+            if (data.message === "Email already exists.") {
+                notify("error", data.message)
+            } else {
                 router.push('/login')
                 notify("success", "Successfully Registered.")
             }
