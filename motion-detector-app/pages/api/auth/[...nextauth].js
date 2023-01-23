@@ -24,7 +24,7 @@ export default NextAuth({
 
                 const data = {email, password}
 
-                const res = await fetch('http://localhost:4000/login-user', {
+                const res = await fetch('http://192.168.0.110:4000/login-user', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data),

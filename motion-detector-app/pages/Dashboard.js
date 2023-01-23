@@ -109,7 +109,7 @@ export default Dashboard;
 // Redirect to login page if access pages that needed session (logged in)
 export async function getServerSideProps({req}) {
   const session = await getSession({req})
-  const res = await fetch('http://localhost:4000/motion-list');
+  const res = await fetch('http://192.168.0.110:4000/motion-list');
   const data = await res.json();
 
   if (!session) {

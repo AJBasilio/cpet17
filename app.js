@@ -17,7 +17,7 @@ app.use(express.urlencoded({ limit: '2mb', extended: false }));
 const connection = mysql.createConnection({
     host : "localhost",
     user : "root",
-    password : "lunafamily123",
+    password : "password12345",
     database : "opencv_db"
 });
 
@@ -174,6 +174,6 @@ app.post('/submit-pass', (req, res) => {
 
 })
 
-app.listen(port, () => {
-    console.log(`Server: http://localhost:${port}`);
+app.listen(port, '0.0.0.0', () => {
+    console.log(`Server: http://0.0.0.0:${port}`);
 });

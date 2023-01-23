@@ -83,7 +83,7 @@ while True:
 		img_name = f'img_{datetime.now().strftime("%m%d%Y-%H%M%S")}.png'
 		cv2.imwrite(os.path.join('./img_captured', img_name), frame)
 
-		url = 'http://localhost:4000/camera'
+		url = 'http://192.168.0.110:4000/camera'
 		myobj = {"datetime" : str(datetime.now()),
 				 "image" : str(image_decoded)}
 

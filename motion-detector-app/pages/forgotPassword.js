@@ -36,7 +36,7 @@ export default function forgotpassword(){
 
         const data = { email };
 
-        await fetch('http://localhost:4000/forgot-pass', {
+        await fetch('http://192.168.0.110:4000/forgot-pass', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

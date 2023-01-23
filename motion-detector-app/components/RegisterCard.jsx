@@ -41,7 +41,7 @@ const RegisterCard = () => {
 
         const data = { username, email, password };
 
-        await fetch('http://localhost:4000/register', {
+        await fetch('http://192.168.0.110:4000/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

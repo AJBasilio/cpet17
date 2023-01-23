@@ -46,7 +46,7 @@ export default function settings(){
 
         const data = { ses_email, opassword, npassword }
 
-        await fetch('http://localhost:4000/change-pass', {
+        await fetch('http://192.168.0.110:4000/change-pass', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -43,7 +43,7 @@ export default function Login(){
 
         const data = { email, password };
 
-        await fetch('http://localhost:4000/submit-pass', {
+        await fetch('http://192.168.0.110:4000/submit-pass', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
