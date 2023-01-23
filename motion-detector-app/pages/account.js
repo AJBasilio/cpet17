@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useState} from 'react';
 import {getSession, useSession, signOut } from 'next-auth/react';
 import {useFormik} from 'formik';
-import settingsValidate from "../lib/validate";
+import {settingsValidate} from "../lib/validate";
 import { useRouter } from "next/router";
 import toast from "../components/Toast";
 import * as React from "react";
@@ -41,6 +41,7 @@ export default function settings(){
     async function onSubmit(values) {
         const opassword = values.opassword
         const npassword = values.npassword
+        const cnpassword = values.cnpassword
         const ses_email = session.user.email
         console.log(ses_email)
 
@@ -123,14 +124,14 @@ export default function settings(){
                                     <div className={styles.inputLabel}>
                                         Password
                                     </div>
-                                    {formik.errors.password && formik.touched.password ? 
-                                    <span className={styles.guide}>{formik.errors.password}</span> : <></>}
+                                    {formik.errors.opassword && formik.touched.opassword ? 
+                                    <span className={styles.guide}>{formik.errors.opassword}</span> : <></>}
                                 </div>
                                 <input className={styles.formControl}
                                 type={`${show ?"text":"password"}`}
                                 name="password"
                                 placeholder="Password"
-                                {...formik.getFieldProps('password')}
+                                {...formik.getFieldProps('opassword')}
                                 />
                                 <span className={styles.passwordLogo} onClick={()=> setShow(!show)}>
                                 <img src="/logo/Surveillhanz.png" width={25} height={25} />
@@ -141,8 +142,8 @@ export default function settings(){
                                     <div className={styles.inputLabel}>
                                         New Password
                                     </div>
-                                    {formik.errors.password && formik.touched.npassword ? 
-                                    <span className={styles.guide}>{formik.errors.password}</span> : <></>}
+                                    {formik.errors.npassword && formik.touched.npassword ? 
+                                    <span className={styles.guide}>{formik.errors.npassword}</span> : <></>}
                                 </div>
                                 <input className={styles.formControl}
                                 type={`${nshow ?"text":"password"}`}
@@ -159,11 +160,14 @@ export default function settings(){
                                     <div className={styles.inputLabel}>
                                         Confirm New Password
                                     </div>
+                                    {formik.errors.cnpassword && formik.touched.cnpassword ? 
+                                    <span className={styles.guide}>{formik.errors.cnpassword}</span> : <></>}
                                 </div>
                                 <input className={styles.formControl}
                                 type={`${cnshow ?"text":"password"}`}
                                 name="cnpassword"
                                 placeholder="Confirm New Password"
+                                {...formik.getFieldProps('cnpassword')}
                                 />
                                 <span className={styles.passwordLogo} onClick={()=> setcnShow(!cnshow)}>
                                 <img src="/logo/Surveillhanz.png" width={25} height={25} />
